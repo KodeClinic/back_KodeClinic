@@ -14,6 +14,14 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  verificationCode: {
+    type: String,
+    required: false,
+  },
+  validatedAccount: {
+    type: Boolean,
+    required: true,
+  },
   //   name: {
   //     type: String,
   //     required: true,
