@@ -15,7 +15,7 @@ module.exports = {
   createAccount: async (req, res, next) => {
     let securityCode = "";
 
-    for (let index = 0; index <= 5; index++) {
+    for (let index = 0; index <= 3; index++) {
       let character = Math.ceil(Math.random() * 9);
       securityCode += character;
     }
@@ -83,8 +83,6 @@ module.exports = {
         send: {
           msg: "Acceso autorizado",
           token: token,
-          // imgprofile: user.imgprofile,
-          // name: user.name,
         },
       });
     } catch (error) {
