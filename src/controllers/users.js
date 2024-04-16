@@ -12,28 +12,6 @@ module.exports = {
     next({ status: 201, send: { msg: "Usuario encotrado", data: selectuser } });
   },
 
-  // post: async (req, res, next) => {
-  //   console.log(req.body);
-  //   try {
-  //     let user = await User.create(req.body);
-  //     next({ status: 201, send: { msg: "Usuario creado", data: user } });
-  //   } catch (error) {
-  //     next({ status: 400, send: { msg: "Usuario no creado", err: error } });
-  //   }
-
-  //   try {
-  //     await transporter.sendMail({
-  //       from: '"Verificación de Email" <contacto.kodeclinic@gmail.com>', // sender address
-  //       to: req.body.email,
-  //       subject: "Verificación de Email", // Subject line
-  //       // text: "Hello world?", // plain text body
-  //       html: "<b>Código de verificación es: 2345</b>", // html body
-  //     });
-  //   } catch (error) {
-  //     next({ status: 400, send: { msg: "Usuario no creado", err: error } });
-  //   }
-  // },
-
   createAccount: async (req, res, next) => {
     let securityCode = "";
 
@@ -67,9 +45,30 @@ module.exports = {
     }
   },
 
-  // validateEmail: async (req, res, next) => {
+  validateEmail: async (req, res, next) => {
+    const { email } = req.params;
+    const { securityCode } = req.body;
 
-  // },
+    try {
+      let user = await User.findOne({ email, verificationCode: securityCode });
+      if (!user) {
+        next({ status: 401, send: { msg: "Código incorrecto" } });
+      }
+      user.validatedAccount = true;
+      await user.save();
+
+      let token = jwt.create(user);
+      next({
+        status: 200,
+        send: {
+          msg: "Acceso autorizado",
+          token: token,
+        },
+      });
+    } catch (error) {
+      next({ status: 401, send: { msg: "Acceso no autorizado", err: error } });
+    }
+  },
 
   login: async (req, res, next) => {
     try {
