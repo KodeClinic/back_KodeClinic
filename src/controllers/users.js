@@ -37,7 +37,7 @@ module.exports = {
         status: 201,
         send: {
           msg: "Usuario creado esperando validación de Email",
-          data: user,
+          data: user.email,
         },
       });
     } catch (error) {
@@ -71,6 +71,7 @@ module.exports = {
   },
 
   login: async (req, res, next) => {
+    console.log(req.body);
     try {
       let user = await User.findOne({ email: req.body.email });
       if (user.password != req.body.password) {
@@ -86,7 +87,7 @@ module.exports = {
         },
       });
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       next({ status: 401, send: { msg: "Acceso no autorizado", err: error } });
     }
   },

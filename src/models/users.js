@@ -20,21 +20,8 @@ const userSchema = new mongoose.Schema({
   },
   validatedAccount: {
     type: Boolean,
-    required: true,
+    required: false,
   },
-  //   name: {
-  //     type: String,
-  //     required: true,
-  //   },
-  //   username: {
-  //     type: String,
-  //     unique: true,
-  //     required: true,
-  //   },
-  //   imgprofile: {
-  //     type: String,
-  //     required: true,
-  //   },
 });
 
 const User = mongoose.model("Users", userSchema);
