@@ -46,15 +46,19 @@ module.exports = {
   },
 
   validateEmail: async (req, res, next) => {
-    const { email } = req.params;
-    const { securityCode } = req.body;
+    // const { email } = req.params;
+    const { email, securityCode } = req.body;
 
     try {
-      let user = await User.findOne({ email, verificationCode: securityCode });
+      let user = await User.findOne({
+        email: email,
+        verificationCode: securityCode,
+      });
       if (!user) {
         next({ status: 401, send: { msg: "Código incorrecto" } });
       }
       user.validatedAccount = true;
+      user.verificationCode = "";
       await user.save();
 
       let token = jwt.create(user);
