@@ -45,8 +45,43 @@ module.exports = {
     }
   },
 
+  sendEmailCode: async (req, res, next) => {
+    console.log("el body", req.body);
+    const { email } = req.body;
+    let securityCode = "";
+
+    for (let index = 0; index <= 3; index++) {
+      let character = Math.ceil(Math.random() * 9);
+      securityCode += character;
+    }
+
+    try {
+      let user = await User.findOne({
+        email: email,
+      });
+
+      user.verificationCode = securityCode;
+      await user.save();
+
+      await transporter.sendMail({
+        from: '"KodeClinic" <contacto.kodeclinic@gmail.com>',
+        to: req.body.email,
+        subject: `Código de Verificación de Email: ${securityCode}`,
+        html: `<b>El código para completar la verificación de este correo es: ${securityCode} </b>`, // html body
+      });
+      next({
+        status: 201,
+        send: {
+          msg: "Código de validación de Email enviado",
+          data: user.email,
+        },
+      });
+    } catch (error) {
+      next({ status: 400, send: { msg: "Código no enviado", err: error } });
+    }
+  },
+
   validateEmail: async (req, res, next) => {
-    // const { email } = req.params;
     const { email, securityCode } = req.body;
 
     try {
@@ -75,13 +110,14 @@ module.exports = {
   },
 
   login: async (req, res, next) => {
-    console.log(req.body);
     try {
       let user = await User.findOne({ email: req.body.email });
       if (user.password != req.body.password) {
-        next({ status: 401, send: { msg: "Email o password incorrecto" } });
+        next({ status: 400, send: { msg: "Email o password incorrecto" } });
+      } else if (user.validatedAccount === false) {
+        next({ status: 401, send: { msg: "Email pendiente de validar" } });
       }
-      //delete user.password
+
       let token = jwt.create(user);
       next({
         status: 200,
@@ -93,6 +129,71 @@ module.exports = {
     } catch (error) {
       // console.log(error);
       next({ status: 401, send: { msg: "Acceso no autorizado", err: error } });
+    }
+  },
+
+  forgotPassword: async (req, res, next) => {
+    const { email } = req.body;
+
+    try {
+      let user = await User.findOne({
+        email: email,
+      });
+      if (!user) {
+        next({ status: 401, send: { msg: "Email no registrado" } });
+      }
+
+      let securityCode = "";
+
+      for (let index = 0; index <= 3; index++) {
+        let character = Math.ceil(Math.random() * 9);
+        securityCode += character;
+      }
+
+      user.verificationCode = securityCode;
+      await user.save();
+
+      await transporter.sendMail({
+        from: '"KodeClinic" <contacto.kodeclinic@gmail.com>',
+        to: req.body.email,
+        subject: `Código de restablecimiento de contraseña: ${securityCode}`,
+        // text: "Hello world?", // plain text body
+        html: `<b>El código para poder restablecer su contraseña es: ${securityCode} </b>`, // html body
+      });
+      next({
+        status: 201,
+        send: {
+          msg: "Correo de restablecimiento de contraseña enviado, en espera de actualización",
+          data: user.email,
+        },
+      });
+    } catch (error) {
+      next({ status: 401, send: { msg: "Acceso no autorizado", err: error } });
+    }
+  },
+
+  restorePassword: async (req, res, next) => {
+    const { email, newpassword } = req.body;
+
+    try {
+      let user = await User.findOne({
+        email: email,
+      });
+
+      user.password = newpassword;
+      await user.save();
+
+      next({
+        status: 201,
+        send: {
+          msg: "Contraseña restablecida con éxito",
+        },
+      });
+    } catch (error) {
+      next({
+        status: 401,
+        send: { msg: "Error al restablecer la contraseña", err: error },
+      });
     }
   },
 };
