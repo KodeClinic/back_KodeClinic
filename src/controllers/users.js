@@ -46,7 +46,6 @@ module.exports = {
   },
 
   sendEmailCode: async (req, res, next) => {
-    console.log("el body", req.body);
     const { email } = req.body;
     let securityCode = "";
 
