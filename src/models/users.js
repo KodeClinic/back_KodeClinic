@@ -1,51 +1,6 @@
 const mongoose = require("mongoose");
-
-const personalInformationSchema = new mongoose.Schema({
-  name: { type: String, required: false }, //Patient & Specialist
-  lastName: { type: String, required: false }, //Patient & Specialist
-  birthDate: { type: String, required: false }, //Patient & Specialist
-  gender: { type: String, required: false }, //Patient & Specialist
-  cellphone: { type: String, required: false }, //Patient & Specialist
-  adress: { type: String, required: false }, //Patient & Specialist
-  colony: { type: String, required: false }, //Patient & Specialist
-  state: { type: String, required: false }, //Patient & Specialist
-  medicalLicense: { type: String, required: false, unique: true }, //Specialist
-  occupation: { type: String, required: false }, //Patient
-  bloodType: { type: String, required: false }, //Patient
-  religion: { type: String, required: false }, //Patient
-  education: {
-    universityName: { type: String, required: false },
-    carrer: { type: String, required: false },
-    title: { type: String, required: false },
-  }, //Specialist
-  certifications: {
-    institutionName: { type: String, required: false },
-    certificationDate: { type: String, required: false },
-    certificationName: { type: String, required: false },
-  }, //Specialist
-  emergencyContact: [
-    {
-      number: { type: String, required: false },
-      relationship: { type: String, required: false },
-    },
-  ], //Patient
-  patientList: [
-    {
-      patientID: { type: String, required: false, unique: true },
-      patientName: { type: String, required: false },
-      patientLastName: { type: String, required: false },
-      patientGender: { type: String, required: false },
-      patientCellphone: { type: String, required: false },
-    },
-  ], //Specialist
-  availability: [
-    {
-      day: { type: String, required: false },
-      start: { type: String, required: false },
-      end: { type: String, required: false },
-    },
-  ], //Specialist
-});
+const SpecialistInformationSchema = require("../models/submodels/specialists");
+const PatientInformationSchema = require("../models/submodels/patients");
 
 const userSchema = new mongoose.Schema({
   email: {
@@ -72,8 +27,42 @@ const userSchema = new mongoose.Schema({
   role: {
     type: String,
     required: true,
+    enum: ["patient", "specialist"],
   },
-  personalInformation: personalInformationSchema,
+  name: {
+    type: String,
+    required: false,
+  },
+  lastName: {
+    type: String,
+    required: false,
+  },
+  birthDate: {
+    type: String,
+    required: false,
+  },
+  gender: {
+    type: String,
+    required: false,
+  },
+  cellphone: {
+    type: String,
+    required: false,
+  },
+  adress: {
+    type: String,
+    required: false,
+  },
+  colony: {
+    type: String,
+    required: false,
+  },
+  state: {
+    type: String,
+    required: false,
+  },
+  patientInformation: PatientInformationSchema,
+  specialistInformation: SpecialistInformationSchema,
 });
 
 const User = mongoose.model("Users", userSchema);
