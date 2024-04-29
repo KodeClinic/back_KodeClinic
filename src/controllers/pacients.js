@@ -14,8 +14,11 @@ module.exports = {
   },
   getById: async (req, res, next) => {
     const { id } = req.params;
+    const pxId = id;
+    console.log(pxId);
     try {
-      let pxinfo = await PxInfo.findById(id);
+      //let pxinfo = await PxInfo.findById(id);
+      let pxinfo = await PxInfo.findOne({ pxId: pxId });
       next({
         status: 200,
         send: { msg: "Paciente encontrado", data: pxinfo },
