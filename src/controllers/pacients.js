@@ -27,4 +27,15 @@ module.exports = {
       next({ status: 404, send: { msg: "Paciente no encontrado" } });
     }
   },
+  getAll: async (req, res, next) => {
+    try {
+      let PxAll = await PxInfo.find();
+      next({
+        status: 200,
+        send: { msg: "Pacientes encontrados", data: PxAll },
+      });
+    } catch (error) {
+      next({ status: 404, send: { msg: "Pacientes no encontrados" } });
+    }
+  },
 };
