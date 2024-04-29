@@ -18,6 +18,9 @@ app.use(morgan("dev"));
 app.use("/", publicRoutes);
 app.use("/api", jwt.verify, routes);
 
+//Importacion de rutas privadas
+app.use("/", routes);
+
 //Midleware del final
 app.use((resp, req, res, next) => {
   res.status(resp.status).send(resp.send);
