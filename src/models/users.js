@@ -49,7 +49,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
-  adress: {
+  address: {
     type: String,
     required: false,
   },

@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
-const PatientInformationSchema = new mongoose.Schema({
+const PatientSchema = new mongoose.Schema({
+  specialistId: { type: String, required: true },
   occupation: { type: String, required: false },
   bloodType: { type: String, required: false },
   religion: { type: String, required: false },
@@ -11,5 +12,10 @@ const PatientInformationSchema = new mongoose.Schema({
     },
   ],
 });
+
+const PatientInformationSchema = mongoose.model(
+  "PatientInformationSchema",
+  PatientSchema
+);
 
 module.exports = PatientInformationSchema;
