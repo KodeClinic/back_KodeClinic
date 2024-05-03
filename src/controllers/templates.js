@@ -3,10 +3,10 @@ const Template = require("../models/templates");
 const jwt = require("../utils/jwt");
 
 module.exports = {
-  getbyId: async (req, res, next) => {
+  getbyTemplateId: async (req, res, next) => {
     const { id } = req.params;
     try {
-      let selectTemplate = await Template.findById(id);
+      let selectTemplate = await Template.findOne({ templateId: id });
       if (!selectTemplate) {
         next({ status: 404, send: { msg: "Template no encontrado" } });
       }

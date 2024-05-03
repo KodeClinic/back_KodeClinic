@@ -3,7 +3,7 @@ const router = express.Router();
 const templateController = require("../controllers/templates");
 
 //Templates
-router.get("/:id", templateController.getbyId); // /api/templates/:id
+router.get("/:templateId", templateController.getbyTemplateId); // /api/templates/:templateId
 router.post("/postTemplate", templateController.postTemplate); // /api/templates/postTemplate
 
 module.exports = router;

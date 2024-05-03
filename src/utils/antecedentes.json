@@ -6,13 +6,15 @@
     {
       "title": "Patológicos",
       "sections": [],
-      "screenInputs": [
+      "screenNumber": 1,
+      "inputList": [
         {
           "label": "Alergias",
           "inputType": "checkbox",
           "placeholder": "",
           "isCheckbox": true,
           "isSelect": false,
+          "isMulti": false,
           "optionSelect": []
         },
         {
@@ -21,6 +23,7 @@
           "placeholder": "",
           "isCheckbox": true,
           "isSelect": false,
+          "isMulti": false,
           "optionSelect": []
         },
         {
@@ -29,6 +32,7 @@
           "placeholder": "",
           "isCheckbox": true,
           "isSelect": false,
+          "isMulti": false,
           "optionSelect": []
         },
         {
@@ -37,6 +41,7 @@
           "placeholder": "",
           "isCheckbox": true,
           "isSelect": false,
+          "isMulti": false,
           "optionSelect": []
         },
         {
@@ -45,6 +50,7 @@
           "placeholder": "",
           "isCheckbox": true,
           "isSelect": false,
+          "isMulti": false,
           "optionSelect": []
         },
         {
@@ -53,6 +59,7 @@
           "placeholder": "Selecciona todas las que apliquen",
           "isCheckbox": false,
           "isSelect": true,
+          "isMulti": true,
           "optionSelect": [
             { "value": "Umbilical", "label": "Umbilical" },
             { "value": "Epigastrica", "label": "Epigastrica" },
@@ -67,6 +74,7 @@
           "placeholder": "Selecciona todas las que apliquen",
           "isCheckbox": false,
           "isSelect": true,
+          "isMulti": true,
           "optionSelect": [
             { "value": "Cervical", "label": "Cervical" },
             { "value": "Rodilla", "label": "Rodilla" },
@@ -81,6 +89,7 @@
           "placeholder": "Selecciona todas las que apliquen",
           "isCheckbox": false,
           "isSelect": true,
+          "isMulti": true,
           "optionSelect": [
             { "value": "Hombro", "label": "Hombro" },
             { "value": "Codo", "label": "Codo" },
@@ -100,6 +109,7 @@
           "placeholder": "Selecciona todas las que apliquen",
           "isCheckbox": false,
           "isSelect": true,
+          "isMulti": true,
           "optionSelect": [
             { "value": "Disco", "label": "Disco" },
             { "value": "Clavícula", "label": "Clavícula" },
@@ -121,6 +131,7 @@
           "placeholder": "Selecciona todas las que apliquen",
           "isCheckbox": false,
           "isSelect": true,
+          "isMulti": true,
           "optionSelect": [
             { "value": "Asma", "label": "Asma" },
             { "value": "Disnea", "label": "Disnea" },
@@ -134,6 +145,7 @@
           "placeholder": "Selecciona todas las que apliquen",
           "isCheckbox": false,
           "isSelect": true,
+          "isMulti": true,
           "optionSelect": [
             { "value": "Rupturas", "label": "Rupturas" },
             { "value": "Distensión", "label": "Distensión" },
@@ -152,6 +164,7 @@
           "placeholder": "Selecciona todas las que apliquen",
           "isCheckbox": false,
           "isSelect": true,
+          "isMulti": true,
           "optionSelect": [
             { "value": "Arritmias", "label": "Arritmias" },
             {
@@ -183,6 +196,7 @@
           "placeholder": "Selecciona todas las que apliquen",
           "isCheckbox": false,
           "isSelect": true,
+          "isMulti": true,
           "optionSelect": [
             { "value": "Parkinson", "label": "Parkinson" },
             { "value": "EVC", "label": "EVC" },
@@ -197,6 +211,7 @@
           "placeholder": "Selecciona todas las que apliquen",
           "isCheckbox": false,
           "isSelect": true,
+          "isMulti": true,
           "optionSelect": [
             { "value": "Otra", "label": "Otra" },
             { "value": "Ninguna", "label": "Ninguna" }
@@ -208,6 +223,7 @@
           "placeholder": "Selecciona todas las que apliquen",
           "isCheckbox": false,
           "isSelect": true,
+          "isMulti": true,
           "optionSelect": [
             { "value": "Insuf. Venosa", "label": "Insuf. Venosa" },
             { "value": "Trombosis V.P.", "label": "Trombosis V.P." },
@@ -224,6 +240,7 @@
           "placeholder": "Selecciona todas las que apliquen",
           "isCheckbox": false,
           "isSelect": true,
+          "isMulti": true,
           "optionSelect": [
             { "value": "Artritis R.", "label": "Artritis R." },
             { "value": "Artrosis", "label": "Artrosis" },
@@ -242,6 +259,7 @@
           "placeholder": "Selecciona todas las que apliquen",
           "isCheckbox": false,
           "isSelect": true,
+          "isMulti": true,
           "optionSelect": [
             { "value": "Otra", "label": "Otra" },
             { "value": "Ninguna", "label": "Ninguna" }
@@ -253,6 +271,7 @@
           "placeholder": "Selecciona todas las que apliquen",
           "isCheckbox": false,
           "isSelect": true,
+          "isMulti": true,
           "optionSelect": [
             { "value": "Sífilis", "label": "Sífilis" },
             { "value": "Gonorrea", "label": "Gonorrea" },
@@ -264,8 +283,267 @@
             { "value": "Ninguna", "label": "Ninguna" }
           ]
         }
+      ]
+    },
+    {
+      "title": "Personales No Patológicos",
+      "sections": [
+        {
+          "name": "Adicciones",
+          "description": "",
+          "isVisible": true,
+          "inputList": [
+            {
+              "label": "¿Conumes drogas?",
+              "inputType": "",
+              "placeholder": "Selecciona la opción que aplique",
+              "isCheckbox": false,
+              "isSelect": true,
+              "isMulti": false,
+              "optionSelect": [
+                { "value": "Sí", "label": "Sí" },
+                { "value": "No", "label": "No" }
+              ]
+            },
+            {
+              "label": "¿Conumes alcohol?",
+              "inputType": "",
+              "placeholder": "Selecciona la opción que aplique",
+              "isCheckbox": false,
+              "isSelect": true,
+              "isMulti": false,
+              "optionSelect": [
+                { "value": "Sí", "label": "Sí" },
+                { "value": "No", "label": "No" }
+              ]
+            },
+            {
+              "label": "¿Conumes tabaco?",
+              "inputType": "",
+              "placeholder": "Selecciona la opción que aplique",
+              "isCheckbox": false,
+              "isSelect": true,
+              "isMulti": false,
+              "optionSelect": [
+                { "value": "Sí", "label": "Sí" },
+                { "value": "No", "label": "No" }
+              ]
+            },
+            {
+              "label": "Frecuencia consumo drogas por semana",
+              "inputType": "",
+              "placeholder": "Selecciona la opción que aplique",
+              "isCheckbox": false,
+              "isSelect": true,
+              "isMulti": false,
+              "optionSelect": [
+                { "value": "Una a dos veces", "label": "Una a dos veces" },
+                {
+                  "value": "Tres a cuatro veces",
+                  "label": "Tres a cuatro veces"
+                },
+                {
+                  "value": "Más de cuatro veces",
+                  "label": "Más de cuatro veces"
+                }
+              ]
+            },
+            {
+              "label": "Frecuencia consumo alcohol por semana",
+              "inputType": "",
+              "placeholder": "Selecciona la opción que aplique",
+              "isCheckbox": false,
+              "isSelect": true,
+              "isMulti": false,
+              "optionSelect": [
+                { "value": "Una a dos veces", "label": "Una a dos veces" },
+                {
+                  "value": "Tres a cuatro veces",
+                  "label": "Tres a cuatro veces"
+                },
+                {
+                  "value": "Más de cuatro veces",
+                  "label": "Más de cuatro veces"
+                }
+              ]
+            },
+            {
+              "label": "Frecuencia consumo tabaco por semana",
+              "inputType": "",
+              "placeholder": "Selecciona la opción que aplique",
+              "isCheckbox": false,
+              "isSelect": true,
+              "isMulti": false,
+              "optionSelect": [
+                { "value": "Una a dos veces", "label": "Una a dos veces" },
+                {
+                  "value": "Tres a cuatro veces",
+                  "label": "Tres a cuatro veces"
+                },
+                {
+                  "value": "Más de cuatro veces",
+                  "label": "Más de cuatro veces"
+                }
+              ]
+            },
+            {
+              "label": "Intolerancias",
+              "inputType": "text",
+              "placeholder": "Escriba aquí",
+              "isCheckbox": false,
+              "isSelect": false,
+              "isMulti": false,
+              "optionSelect": []
+            }
+          ]
+        },
+        {
+          "name": "Alimentación",
+          "description": "",
+          "isVisible": true,
+          "inputList": [
+            {
+              "label": "Consumo alimentos por día",
+              "inputType": "",
+              "placeholder": "Selecciona la opción que aplique",
+              "isCheckbox": false,
+              "isSelect": true,
+              "isMulti": false,
+              "optionSelect": [
+                { "value": "Una a dos veces", "label": "Una a dos veces" },
+                {
+                  "value": "Tres a cuatro veces",
+                  "label": "Tres a cuatro veces"
+                },
+                {
+                  "value": "Más de cuatro veces",
+                  "label": "Más de cuatro veces"
+                }
+              ]
+            },
+            {
+              "label": "Calidad de la alimentación",
+              "inputType": "",
+              "placeholder": "Selecciona la opción que aplique",
+              "isCheckbox": false,
+              "isSelect": true,
+              "isMulti": false,
+              "optionSelect": [
+                { "value": "Pobre", "label": "Pobre" },
+                { "value": "Buena", "label": "Buena" },
+                { "value": "Muy buena", "label": "Muy buena" }
+              ]
+            },
+            {
+              "label": "Calidad de la hidratación",
+              "inputType": "",
+              "placeholder": "Selecciona la opción que aplique",
+              "isCheckbox": false,
+              "isSelect": true,
+              "isMulti": false,
+              "optionSelect": [
+                { "value": "Pobre", "label": "Pobre" },
+                { "value": "Buena", "label": "Buena" },
+                { "value": "Muy buena", "label": "Muy buena" }
+              ]
+            },
+            {
+              "label": "Suplementación",
+              "inputType": "text",
+              "placeholder": "Escriba aquí",
+              "isCheckbox": false,
+              "isSelect": false,
+              "isMulti": false,
+              "optionSelect": []
+            }
+          ]
+        },
+        {
+          "name": "Actividad Física ",
+          "description": "",
+          "isVisible": true,
+          "inputList": [
+            {
+              "label": "Horas laborales por semana",
+              "inputType": "",
+              "placeholder": "Selecciona la opción que aplique",
+              "isCheckbox": false,
+              "isSelect": true,
+              "isMulti": false,
+              "optionSelect": [
+                { "value": "No trabaja", "label": "No trabaja" },
+                { "value": "Menos de 20 horas", "label": "Menos de 20 horas" },
+                { "value": "De 20 a 40 horas", "label": "De 20 a 40 horas" },
+                { "value": "Más de 40 horas", "label": "Más de 40 horas" }
+              ]
+            },
+            {
+              "label": "Calidad de la postura",
+              "inputType": "",
+              "placeholder": "Selecciona la opción que aplique",
+              "isCheckbox": false,
+              "isSelect": true,
+              "isMulti": false,
+              "optionSelect": [
+                { "value": "Pobre", "label": "Pobre" },
+                { "value": "Buena", "label": "Buena" },
+                { "value": "Muy buena", "label": "Muy buena" }
+              ]
+            },
+            {
+              "label": "Realizas ejercicio?",
+              "inputType": "",
+              "placeholder": "Selecciona la opción que aplique",
+              "isCheckbox": false,
+              "isSelect": true,
+              "isMulti": false,
+              "optionSelect": [
+                { "value": "Sí", "label": "Sí" },
+                { "value": "No", "label": "No" }
+              ]
+            },
+            {
+              "label": "Horas de descanso por semana",
+              "inputType": "text",
+              "placeholder": "Escriba aquí",
+              "isCheckbox": false,
+              "isSelect": false,
+              "isMulti": false,
+              "optionSelect": []
+            },
+            {
+              "label": "Tratamiento farmacológico",
+              "inputType": "text",
+              "placeholder": "Escriba aquí",
+              "isCheckbox": false,
+              "isSelect": false,
+              "isMulti": false,
+              "optionSelect": []
+            },
+            {
+              "label": "Frecuencia ejercicio por semana",
+              "inputType": "",
+              "placeholder": "Selecciona la opción que aplique",
+              "isCheckbox": false,
+              "isSelect": true,
+              "isMulti": false,
+              "optionSelect": [
+                { "value": "Una a dos veces", "label": "Una a dos veces" },
+                {
+                  "value": "Tres a cuatro veces",
+                  "label": "Tres a cuatro veces"
+                },
+                {
+                  "value": "Más de cuatro veces",
+                  "label": "Más de cuatro veces"
+                }
+              ]
+            }
+          ]
+        }
       ],
-      "screenNumber": 1
+      "screenNumber": 2,
+      "inputList": []
     }
   ]
 }

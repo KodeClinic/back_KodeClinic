@@ -5,7 +5,7 @@ const sectionTemplateSchema = new mongoose.Schema({
   name: { type: String, required: false },
   description: { type: String, required: false },
   isVisible: { type: Boolean, required: false },
-  sectionInputs: [inputsSchema],
+  inputList: [inputsSchema],
 });
 
 module.exports = sectionTemplateSchema;

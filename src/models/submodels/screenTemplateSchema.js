@@ -5,7 +5,7 @@ const inputsSchema = require("../submodels/inputsSchema");
 const screenTemplateSchema = new mongoose.Schema({
   title: { type: String, required: false },
   sections: [sectionTemplateSchema],
-  screenInputs: [inputsSchema],
+  inputList: [inputsSchema],
   screenNumber: { type: Number, required: false },
 });
 
