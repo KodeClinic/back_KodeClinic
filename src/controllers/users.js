@@ -9,7 +9,10 @@ module.exports = {
     let selectuser = await User.findById(id);
     if (!selectuser)
       next({ status: 404, send: { msg: "Usuario no encontrado" } });
-    next({ status: 201, send: { msg: "Usuario encotrado", data: selectuser } });
+    next({
+      status: 201,
+      send: { msg: "Usuario encontrado", data: selectuser },
+    });
   },
 
   createAccount: async (req, res, next) => {

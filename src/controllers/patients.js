@@ -1,12 +1,18 @@
 const PxAdditionalInfo = require("../models/submodels/patients");
+const PxNewPatient = require("../models/users");
 
 module.exports = {
-  createPxAdditionalInfo: async (req, res, next) => {
+  createNewPx: async (req, res, next) => {
     try {
-      let pxadditionalinfo = await PxAdditionalInfo.create(req.body);
+      const { id } = req.params;
+      console.log(id);
+      let NewPx = await PxNewPatient.create({
+        ...req.body,
+        patientInformation: { specialistId: id },
+      });
       next({
         status: 201,
-        send: { msg: "Paciente creado", data: { pxadditionalinfo } },
+        send: { msg: "Paciente creado", data: { NewPx } },
       });
     } catch (error) {
       next({ status: 400, send: { msg: "Paciente no creado: ", err: error } });
