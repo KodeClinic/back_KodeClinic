@@ -3,6 +3,7 @@ const SpecialistInformationSchema = require("../models/submodels/specialists");
 const PatientInformationSchema = require("../models/submodels/patients");
 
 const userSchema = new mongoose.Schema({
+  _id: mongoose.Types.ObjectId,
   email: {
     type: String,
     required: true,
@@ -44,6 +45,7 @@ const userSchema = new mongoose.Schema({
   gender: {
     type: String,
     required: false,
+    enum: ["male", "female"],
   },
   cellphone: {
     type: String,

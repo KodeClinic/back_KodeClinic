@@ -1,0 +1,549 @@
+{
+  "templateID": 1,
+  "name": "Antecedentes Médicos",
+  "isVisible": true,
+  "screens": [
+    {
+      "title": "Patológicos",
+      "sections": [],
+      "screenNumber": 1,
+      "inputList": [
+        {
+          "label": "Alergias",
+          "inputType": "checkbox",
+          "placeholder": "",
+          "isCheckbox": true,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        },
+        {
+          "label": "Hipertensión",
+          "inputType": "checkbox",
+          "placeholder": "",
+          "isCheckbox": true,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        },
+        {
+          "label": "Cancer",
+          "inputType": "checkbox",
+          "placeholder": "",
+          "isCheckbox": true,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        },
+        {
+          "label": "Sobrepeso",
+          "inputType": "checkbox",
+          "placeholder": "",
+          "isCheckbox": true,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        },
+        {
+          "label": "Diabetes",
+          "inputType": "checkbox",
+          "placeholder": "",
+          "isCheckbox": true,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        },
+        {
+          "label": "Hernias",
+          "inputType": "",
+          "placeholder": "Selecciona todas las que apliquen",
+          "isCheckbox": false,
+          "isSelect": true,
+          "isMulti": true,
+          "optionSelect": [
+            { "value": "Umbilical", "label": "Umbilical" },
+            { "value": "Epigastrica", "label": "Epigastrica" },
+            { "value": "Inguinal", "label": "Inguinal" },
+            { "value": "Otra", "label": "Otra" },
+            { "value": "Ninguna", "label": "Ninguna" }
+          ]
+        },
+        {
+          "label": "Esguinces",
+          "inputType": "",
+          "placeholder": "Selecciona todas las que apliquen",
+          "isCheckbox": false,
+          "isSelect": true,
+          "isMulti": true,
+          "optionSelect": [
+            { "value": "Cervical", "label": "Cervical" },
+            { "value": "Rodilla", "label": "Rodilla" },
+            { "value": "Tobillo", "label": "Tobillo" },
+            { "value": "Otro", "label": "Otro" },
+            { "value": "Ninguno", "label": "Ninguno" }
+          ]
+        },
+        {
+          "label": "Luxaciónes",
+          "inputType": "",
+          "placeholder": "Selecciona todas las que apliquen",
+          "isCheckbox": false,
+          "isSelect": true,
+          "isMulti": true,
+          "optionSelect": [
+            { "value": "Hombro", "label": "Hombro" },
+            { "value": "Codo", "label": "Codo" },
+            { "value": "Fémur", "label": "Fémur" },
+            { "value": "Rodilla", "label": "Rodilla" },
+            { "value": "Tobillo", "label": "Tobillo" },
+            { "value": "Muñeca", "label": "Muñeca" },
+            { "value": "Tibia", "label": "Tibia" },
+            { "value": "Peroné", "label": "Peroné" },
+            { "value": "Otra", "label": "Otra" },
+            { "value": "Ninguna", "label": "Ninguna" }
+          ]
+        },
+        {
+          "label": "Fracturas",
+          "inputType": "",
+          "placeholder": "Selecciona todas las que apliquen",
+          "isCheckbox": false,
+          "isSelect": true,
+          "isMulti": true,
+          "optionSelect": [
+            { "value": "Disco", "label": "Disco" },
+            { "value": "Clavícula", "label": "Clavícula" },
+            { "value": "Fémur", "label": "Fémur" },
+            { "value": "Húmero", "label": "Húmero" },
+            { "value": "Radio", "label": "Radio" },
+            { "value": "Cúbito", "label": "Cúbito" },
+            { "value": "Cadera", "label": "Cadera" },
+            { "value": "Muñeca", "label": "Muñeca" },
+            { "value": "Tibia", "label": "Tibia" },
+            { "value": "Peroné", "label": "Peroné" },
+            { "value": "Otra", "label": "Otra" },
+            { "value": "Ninguna", "label": "Ninguna" }
+          ]
+        },
+        {
+          "label": "E. Respiratorias",
+          "inputType": "",
+          "placeholder": "Selecciona todas las que apliquen",
+          "isCheckbox": false,
+          "isSelect": true,
+          "isMulti": true,
+          "optionSelect": [
+            { "value": "Asma", "label": "Asma" },
+            { "value": "Disnea", "label": "Disnea" },
+            { "value": "Otra", "label": "Otra" },
+            { "value": "Ninguna", "label": "Ninguna" }
+          ]
+        },
+        {
+          "label": "E. Musculáres",
+          "inputType": "",
+          "placeholder": "Selecciona todas las que apliquen",
+          "isCheckbox": false,
+          "isSelect": true,
+          "isMulti": true,
+          "optionSelect": [
+            { "value": "Rupturas", "label": "Rupturas" },
+            { "value": "Distensión", "label": "Distensión" },
+            { "value": "Sarcopenia", "label": "Sarcopenia" },
+            { "value": "Contusión", "label": "Contusión" },
+            { "value": "Contractura", "label": "Contractura" },
+            { "value": "Calambre", "label": "Calambre" },
+            { "value": "DOMS", "label": "DOMS" },
+            { "value": "Otra", "label": "Otra" },
+            { "value": "Ninguna", "label": "Ninguna" }
+          ]
+        },
+        {
+          "label": "E. Cardiovasculares",
+          "inputType": "",
+          "placeholder": "Selecciona todas las que apliquen",
+          "isCheckbox": false,
+          "isSelect": true,
+          "isMulti": true,
+          "optionSelect": [
+            { "value": "Arritmias", "label": "Arritmias" },
+            {
+              "value": "Arteriopatía coronaria",
+              "label": "Arteriopatía coronaria"
+            },
+            {
+              "value": "Insuficiencia cardiaca",
+              "label": "Insuficiencia cardiaca"
+            },
+            {
+              "value": "Valvulopatía cardiaca",
+              "label": "Valvulopatía cardiaca"
+            },
+            {
+              "value": "Afección cardiaca congénita",
+              "label": "Afección cardiaca congénita"
+            },
+            { "value": "Miocardiopatía", "label": "Miocardiopatía" },
+            { "value": "Pericarditis", "label": "Pericarditis" },
+            { "value": "Otra", "label": "Otra" },
+            { "value": "Ninguna", "label": "Ninguna" }
+          ]
+        },
+
+        {
+          "label": "E. Neourológicas",
+          "inputType": "",
+          "placeholder": "Selecciona todas las que apliquen",
+          "isCheckbox": false,
+          "isSelect": true,
+          "isMulti": true,
+          "optionSelect": [
+            { "value": "Parkinson", "label": "Parkinson" },
+            { "value": "EVC", "label": "EVC" },
+            { "value": "ELA ", "label": "ELA " },
+            { "value": "Otra", "label": "Otra" },
+            { "value": "Ninguna", "label": "Ninguna" }
+          ]
+        },
+        {
+          "label": "E. Renales",
+          "inputType": "",
+          "placeholder": "Selecciona todas las que apliquen",
+          "isCheckbox": false,
+          "isSelect": true,
+          "isMulti": true,
+          "optionSelect": [
+            { "value": "Otra", "label": "Otra" },
+            { "value": "Ninguna", "label": "Ninguna" }
+          ]
+        },
+        {
+          "label": "E. Vasculaes",
+          "inputType": "",
+          "placeholder": "Selecciona todas las que apliquen",
+          "isCheckbox": false,
+          "isSelect": true,
+          "isMulti": true,
+          "optionSelect": [
+            { "value": "Insuf. Venosa", "label": "Insuf. Venosa" },
+            { "value": "Trombosis V.P.", "label": "Trombosis V.P." },
+            { "value": "Telangiectaseas", "label": "Telangiectaseas" },
+            { "value": "Várices", "label": "Várices" },
+            { "value": "Vena varicosa", "label": "Vena varicosa" },
+            { "value": "Otra", "label": "Otra" },
+            { "value": "Ninguna", "label": "Ninguna" }
+          ]
+        },
+        {
+          "label": "E. Óseas",
+          "inputType": "",
+          "placeholder": "Selecciona todas las que apliquen",
+          "isCheckbox": false,
+          "isSelect": true,
+          "isMulti": true,
+          "optionSelect": [
+            { "value": "Artritis R.", "label": "Artritis R." },
+            { "value": "Artrosis", "label": "Artrosis" },
+            { "value": "Osteoartrósis", "label": "Osteoartrósis" },
+            { "value": "Osteoporósis", "label": "Osteoporósis" },
+            { "value": "Osteonecrósis", "label": "Osteonecrósis" },
+            { "value": "Osteopenia", "label": "Osteopenia" },
+            { "value": "Osteopenia", "label": "Osteopenia" },
+            { "value": "Otra", "label": "Otra" },
+            { "value": "Ninguna", "label": "Ninguna" }
+          ]
+        },
+        {
+          "label": "E. Hepáticas",
+          "inputType": "",
+          "placeholder": "Selecciona todas las que apliquen",
+          "isCheckbox": false,
+          "isSelect": true,
+          "isMulti": true,
+          "optionSelect": [
+            { "value": "Otra", "label": "Otra" },
+            { "value": "Ninguna", "label": "Ninguna" }
+          ]
+        },
+        {
+          "label": "E.T.S.",
+          "inputType": "",
+          "placeholder": "Selecciona todas las que apliquen",
+          "isCheckbox": false,
+          "isSelect": true,
+          "isMulti": true,
+          "optionSelect": [
+            { "value": "Sífilis", "label": "Sífilis" },
+            { "value": "Gonorrea", "label": "Gonorrea" },
+            { "value": "Clamidia", "label": "Clamidia" },
+            { "value": "Herpes simple", "label": "Herpes simple" },
+            { "value": "VPH", "label": "VPH" },
+            { "value": "VIH", "label": "VIH" },
+            { "value": "Otra", "label": "Otra" },
+            { "value": "Ninguna", "label": "Ninguna" }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Personales No Patológicos",
+      "sections": [
+        {
+          "name": "Adicciones",
+          "description": "",
+          "isVisible": true,
+          "inputList": [
+            {
+              "label": "¿Conumes drogas?",
+              "inputType": "",
+              "placeholder": "Selecciona la opción que aplique",
+              "isCheckbox": false,
+              "isSelect": true,
+              "isMulti": false,
+              "optionSelect": [
+                { "value": "Sí", "label": "Sí" },
+                { "value": "No", "label": "No" }
+              ]
+            },
+            {
+              "label": "¿Conumes alcohol?",
+              "inputType": "",
+              "placeholder": "Selecciona la opción que aplique",
+              "isCheckbox": false,
+              "isSelect": true,
+              "isMulti": false,
+              "optionSelect": [
+                { "value": "Sí", "label": "Sí" },
+                { "value": "No", "label": "No" }
+              ]
+            },
+            {
+              "label": "¿Conumes tabaco?",
+              "inputType": "",
+              "placeholder": "Selecciona la opción que aplique",
+              "isCheckbox": false,
+              "isSelect": true,
+              "isMulti": false,
+              "optionSelect": [
+                { "value": "Sí", "label": "Sí" },
+                { "value": "No", "label": "No" }
+              ]
+            },
+            {
+              "label": "Frecuencia consumo drogas por semana",
+              "inputType": "",
+              "placeholder": "Selecciona la opción que aplique",
+              "isCheckbox": false,
+              "isSelect": true,
+              "isMulti": false,
+              "optionSelect": [
+                { "value": "Una a dos veces", "label": "Una a dos veces" },
+                {
+                  "value": "Tres a cuatro veces",
+                  "label": "Tres a cuatro veces"
+                },
+                {
+                  "value": "Más de cuatro veces",
+                  "label": "Más de cuatro veces"
+                }
+              ]
+            },
+            {
+              "label": "Frecuencia consumo alcohol por semana",
+              "inputType": "",
+              "placeholder": "Selecciona la opción que aplique",
+              "isCheckbox": false,
+              "isSelect": true,
+              "isMulti": false,
+              "optionSelect": [
+                { "value": "Una a dos veces", "label": "Una a dos veces" },
+                {
+                  "value": "Tres a cuatro veces",
+                  "label": "Tres a cuatro veces"
+                },
+                {
+                  "value": "Más de cuatro veces",
+                  "label": "Más de cuatro veces"
+                }
+              ]
+            },
+            {
+              "label": "Frecuencia consumo tabaco por semana",
+              "inputType": "",
+              "placeholder": "Selecciona la opción que aplique",
+              "isCheckbox": false,
+              "isSelect": true,
+              "isMulti": false,
+              "optionSelect": [
+                { "value": "Una a dos veces", "label": "Una a dos veces" },
+                {
+                  "value": "Tres a cuatro veces",
+                  "label": "Tres a cuatro veces"
+                },
+                {
+                  "value": "Más de cuatro veces",
+                  "label": "Más de cuatro veces"
+                }
+              ]
+            },
+            {
+              "label": "Intolerancias",
+              "inputType": "text",
+              "placeholder": "Escriba aquí",
+              "isCheckbox": false,
+              "isSelect": false,
+              "isMulti": false,
+              "optionSelect": []
+            }
+          ]
+        },
+        {
+          "name": "Alimentación",
+          "description": "",
+          "isVisible": true,
+          "inputList": [
+            {
+              "label": "Consumo alimentos por día",
+              "inputType": "",
+              "placeholder": "Selecciona la opción que aplique",
+              "isCheckbox": false,
+              "isSelect": true,
+              "isMulti": false,
+              "optionSelect": [
+                { "value": "Una a dos veces", "label": "Una a dos veces" },
+                {
+                  "value": "Tres a cuatro veces",
+                  "label": "Tres a cuatro veces"
+                },
+                {
+                  "value": "Más de cuatro veces",
+                  "label": "Más de cuatro veces"
+                }
+              ]
+            },
+            {
+              "label": "Calidad de la alimentación",
+              "inputType": "",
+              "placeholder": "Selecciona la opción que aplique",
+              "isCheckbox": false,
+              "isSelect": true,
+              "isMulti": false,
+              "optionSelect": [
+                { "value": "Pobre", "label": "Pobre" },
+                { "value": "Buena", "label": "Buena" },
+                { "value": "Muy buena", "label": "Muy buena" }
+              ]
+            },
+            {
+              "label": "Calidad de la hidratación",
+              "inputType": "",
+              "placeholder": "Selecciona la opción que aplique",
+              "isCheckbox": false,
+              "isSelect": true,
+              "isMulti": false,
+              "optionSelect": [
+                { "value": "Pobre", "label": "Pobre" },
+                { "value": "Buena", "label": "Buena" },
+                { "value": "Muy buena", "label": "Muy buena" }
+              ]
+            },
+            {
+              "label": "Suplementación",
+              "inputType": "text",
+              "placeholder": "Escriba aquí",
+              "isCheckbox": false,
+              "isSelect": false,
+              "isMulti": false,
+              "optionSelect": []
+            }
+          ]
+        },
+        {
+          "name": "Actividad Física ",
+          "description": "",
+          "isVisible": true,
+          "inputList": [
+            {
+              "label": "Horas laborales por semana",
+              "inputType": "",
+              "placeholder": "Selecciona la opción que aplique",
+              "isCheckbox": false,
+              "isSelect": true,
+              "isMulti": false,
+              "optionSelect": [
+                { "value": "No trabaja", "label": "No trabaja" },
+                { "value": "Menos de 20 horas", "label": "Menos de 20 horas" },
+                { "value": "De 20 a 40 horas", "label": "De 20 a 40 horas" },
+                { "value": "Más de 40 horas", "label": "Más de 40 horas" }
+              ]
+            },
+            {
+              "label": "Calidad de la postura",
+              "inputType": "",
+              "placeholder": "Selecciona la opción que aplique",
+              "isCheckbox": false,
+              "isSelect": true,
+              "isMulti": false,
+              "optionSelect": [
+                { "value": "Pobre", "label": "Pobre" },
+                { "value": "Buena", "label": "Buena" },
+                { "value": "Muy buena", "label": "Muy buena" }
+              ]
+            },
+            {
+              "label": "Realizas ejercicio?",
+              "inputType": "",
+              "placeholder": "Selecciona la opción que aplique",
+              "isCheckbox": false,
+              "isSelect": true,
+              "isMulti": false,
+              "optionSelect": [
+                { "value": "Sí", "label": "Sí" },
+                { "value": "No", "label": "No" }
+              ]
+            },
+            {
+              "label": "Horas de descanso por semana",
+              "inputType": "text",
+              "placeholder": "Escriba aquí",
+              "isCheckbox": false,
+              "isSelect": false,
+              "isMulti": false,
+              "optionSelect": []
+            },
+            {
+              "label": "Tratamiento farmacológico",
+              "inputType": "text",
+              "placeholder": "Escriba aquí",
+              "isCheckbox": false,
+              "isSelect": false,
+              "isMulti": false,
+              "optionSelect": []
+            },
+            {
+              "label": "Frecuencia ejercicio por semana",
+              "inputType": "",
+              "placeholder": "Selecciona la opción que aplique",
+              "isCheckbox": false,
+              "isSelect": true,
+              "isMulti": false,
+              "optionSelect": [
+                { "value": "Una a dos veces", "label": "Una a dos veces" },
+                {
+                  "value": "Tres a cuatro veces",
+                  "label": "Tres a cuatro veces"
+                },
+                {
+                  "value": "Más de cuatro veces",
+                  "label": "Más de cuatro veces"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "screenNumber": 2,
+      "inputList": []
+    }
+  ]
+}

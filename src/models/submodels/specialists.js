@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const SpecialistInformationSchema = new mongoose.Schema({
+  _id: mongoose.Types.ObjectId,
   medicalLicense: { type: String, required: false },
   education: {
     universityName: { type: String, required: false },
@@ -26,6 +27,11 @@ const SpecialistInformationSchema = new mongoose.Schema({
       day: { type: String, required: false },
       start: { type: String, required: false },
       end: { type: String, required: false },
+    },
+  ],
+  appointmentList: [
+    {
+      appointmentId: { type: mongoose.Types.ObjectId, required: false },
     },
   ],
 });

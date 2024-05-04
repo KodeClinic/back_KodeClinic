@@ -6,13 +6,26 @@ const transporter = require("../utils/mailer");
 module.exports = {
   getbyId: async (req, res, next) => {
     const { id } = req.params;
-    let selectuser = await User.findById(id);
-    if (!selectuser)
-      next({ status: 404, send: { msg: "Usuario no encontrado" } });
-    next({
-      status: 201,
-      send: { msg: "Usuario encontrado", data: selectuser },
-    });
+    try {
+      let selectuser = await User.findById(id);
+      if (!selectuser) {
+        next({ status: 404, send: { msg: "Usuario no encontrado" } });
+      }
+      res = {
+        id: selectuser._id,
+        email: selectuser.email,
+        name: selectuser.name,
+        lastName: selectuser.lastName,
+        gender: selectuser.gender,
+        cellphone: selectuser.cellphone,
+      };
+      next({
+        status: 201,
+        send: { msg: "Usuario encotrado", data: res },
+      });
+    } catch (error) {
+      next({ status: 400, send: { msg: "Usuario no encontrado", err: error } });
+    }
   },
 
   createAccount: async (req, res, next) => {
@@ -125,11 +138,14 @@ module.exports = {
         status: 200,
         send: {
           msg: "Acceso autorizado",
-          token: token,
+          data: {
+            token: token,
+            id: user._id,
+            role: user.role,
+          },
         },
       });
     } catch (error) {
-      // console.log(error);
       next({ status: 401, send: { msg: "Acceso no autorizado", err: error } });
     }
   },
