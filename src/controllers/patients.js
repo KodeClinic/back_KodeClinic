@@ -1,5 +1,7 @@
 const PxAdditionalInfo = require("../models/submodels/patients");
+const SpecialistInformationSchema = require("../models/submodels/specialists");
 const PxNewPatient = require("../models/users");
+const PxUsers = require("../models/users");
 
 module.exports = {
   createNewPx: async (req, res, next) => {
@@ -20,8 +22,9 @@ module.exports = {
   },
   getPatientById: async (req, res, next) => {
     const { id } = req.params;
+    console.log(id);
     try {
-      let pxadditionalinfo = await PxAdditionalInfo.findById(id);
+      let pxadditionalinfo = await PxUsers.findById(id);
       next({
         status: 200,
         send: { msg: "Paciente encontrado", data: pxadditionalinfo },
@@ -31,8 +34,13 @@ module.exports = {
     }
   },
   getAllPatients: async (req, res, next) => {
+    const { id } = req.params;
+
     try {
-      let AllPatients = await PxAdditionalInfo.find();
+      let AllPatients = await PxUsers.findOne({
+        ...req.body,
+        specialistInformation: patientList,
+      });
       next({
         status: 200,
         send: { msg: "Pacientes encontrados", data: AllPatients },

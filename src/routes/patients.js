@@ -7,7 +7,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/:id/newPx", pxController.createNewPx); // :id Corresponde al ID del especialista.
-router.get("/:id/myPx", pxController.getAllPatients); // :id Corresponde al ID del especialista para buscar en el arreglo de pacientes.
 router.get("/:id", pxController.getPatientById); // :id Corresponde al ID del paciente.
+router.get("/:id/myPx", pxController.getAllPatients); // :id Corresponde al ID del especialista para buscar en el arreglo de pacientes.
 
 module.exports = router;
