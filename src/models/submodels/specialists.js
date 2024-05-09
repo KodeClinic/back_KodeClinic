@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const SpecialistInformationSchema = new mongoose.Schema({
-  _id: mongoose.Types.ObjectId,
+  // _id: mongoose.Types.ObjectId,
   medicalLicense: { type: String, required: false },
   education: {
     universityName: { type: String, required: false },

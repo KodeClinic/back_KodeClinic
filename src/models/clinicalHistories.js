@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const clinicalHistorySchema = new mongoose.Schema({
-  _id: mongoose.Types.ObjectId,
+  // _id: mongoose.Types.ObjectId,
   appointmentId: { type: mongoose.Types.ObjectId, ref: "Appointment" },
   patientId: { type: mongoose.Types.ObjectId, ref: "User" },
   templateId: { type: mongoose.Types.ObjectId, ref: "Template" },

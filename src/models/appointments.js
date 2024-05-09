@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const appointmentSchema = new mongoose.Schema({
-  _id: mongoose.Types.ObjectId,
+  // _id: mongoose.Types.ObjectId,
   date: {
     year: { type: Number, required: true },
     month: { type: Number, required: true },
@@ -13,7 +13,7 @@ const appointmentSchema = new mongoose.Schema({
     required: true,
     enum: ["therapy", "valoration"],
   },
-  paymentType: { type: String, required: true, enum: ["cash"] }, // Valorar si falta Pagada con tarjeta
+  paymentType: { type: String, required: true, enum: ["cash"] }, // Valorar si falta Pagada conv  tarjeta
   paymentStatus: { type: String, required: true, enum: ["paid", "topay"] },
   status: {
     type: String,
