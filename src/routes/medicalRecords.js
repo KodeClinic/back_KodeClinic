@@ -3,6 +3,9 @@ const router = express.Router();
 const medicalRecordController = require("../controllers/medicalRecords");
 
 //Users
-router.get("/create", medicalRecordController.createMedicalRecord); // /api/medicalRecords/create
+router.post(
+  "/create/:patientId/:templateId",
+  medicalRecordController.createMedicalRecord
+); // /api/medicalRecords/create/:patientId/:templateId
 
 module.exports = router;

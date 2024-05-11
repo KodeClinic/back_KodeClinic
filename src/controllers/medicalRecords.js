@@ -1,13 +1,25 @@
 //Los modelos se importan empezando con mayusculas
 const MedicalRecord = require("../models/medicalRecords");
 const jwt = require("../utils/jwt");
-const transporter = require("../utils/mailer");
+const Template = require("../models/templates");
+const Patient = require("../models/users");
 
 module.exports = {
   createMedicalRecord: async (req, res, next) => {
+    const { patientId, templateId } = req.params;
+    const {} = req.body;
+    const TemplateId = await Template.findOne({ templateID: templateId });
+    const PatientId = await Patient.findById(patientId);
+
     try {
       let medicalRecord = await MedicalRecord.create({
-        ...req.body,
+        patientId: PatientId,
+        templateId: TemplateId,
+        values: req.body,
+      });
+
+      await Patient.findByIdAndUpdate(PatientId, {
+        "patientInformation.medicalRecordId": medicalRecord,
       });
 
       next({
