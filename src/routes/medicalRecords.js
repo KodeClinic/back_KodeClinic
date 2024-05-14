@@ -8,4 +8,14 @@ router.post(
   medicalRecordController.createMedicalRecord
 ); // /api/medicalRecords/create/:patientId/:templateId
 
+router.get(
+  "/get/:patientId/:templateId",
+  medicalRecordController.getMedicalRecord
+); // /api/medicalRecords/get/:patientId/:templateId
+
+// router.patch(
+//   "/editInformation/:specialistId",
+//   specialistController.editSpecilistInfo
+// ); // /api/specialists/editInformation/:specialistId
+
 module.exports = router;
