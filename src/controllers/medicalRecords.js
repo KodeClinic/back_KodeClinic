@@ -3,8 +3,6 @@ const MedicalRecord = require("../models/medicalRecords");
 const jwt = require("../utils/jwt");
 const Template = require("../models/templates");
 const Patient = require("../models/users");
-const { restart } = require("nodemon");
-const inputsSchema = require("../models/submodels/inputsSchema");
 
 module.exports = {
   createMedicalRecord: async (req, res, next) => {
