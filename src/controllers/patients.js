@@ -7,7 +7,6 @@ module.exports = {
   createNewPx: async (req, res, next) => {
     try {
       const { id } = req.params;
-      console.log(id);
       let NewPx = await PxNewPatient.create({
         ...req.body,
         patientInformation: { specialistId: id },
@@ -35,7 +34,6 @@ module.exports = {
   },
   getAllPatients: async (req, res, next) => {
     const { id } = req.params;
-
     try {
       let AllPatients = await PxUsers.findOne({
         ...req.body,
