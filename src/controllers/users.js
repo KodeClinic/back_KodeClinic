@@ -41,6 +41,7 @@ module.exports = {
         ...req.body,
         verificationCode: securityCode,
         validatedAccount: false,
+        informationComplete: false,
       });
       await transporter.sendMail({
         from: '"KodeClinic" <contacto.kodeclinic@gmail.com>',

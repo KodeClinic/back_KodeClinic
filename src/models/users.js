@@ -30,6 +30,7 @@ const userSchema = new mongoose.Schema({
     required: true,
     enum: ["patient", "specialist"],
   },
+  informationComplete: { type: Boolean, required: false },
   name: {
     type: String,
     required: false,
