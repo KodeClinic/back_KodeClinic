@@ -1,0 +1,348 @@
+{
+  "templateID": 2,
+  "name": "Hsitorias Clínicas",
+  "isVisible": false,
+  "screens": [
+    {
+      "title": "Estructural",
+      "sections": [],
+      "screenNumber": 1,
+      "inputList": [
+        {
+          "label": "Zona de Lesión",
+          "inputType": "text",
+          "placeholder": "",
+          "isCheckbox": false,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        },
+        {
+          "label": "Tiempo de Evolución",
+          "inputType": "text",
+          "placeholder": "",
+          "isCheckbox": false,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        },
+        {
+          "label": "Estructura Dañada",
+          "inputType": "text",
+          "placeholder": "",
+          "isCheckbox": false,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        },
+        {
+          "label": "Mecanismo de Lesión",
+          "inputType": "text",
+          "placeholder": "",
+          "isCheckbox": false,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        },
+        {
+          "label": "Limitación Funcional",
+          "inputType": "text",
+          "placeholder": "",
+          "isCheckbox": false,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        }
+      ]
+    },
+    {
+      "title": "Estudios",
+      "sections": [],
+      "screenNumber": 1,
+      "inputList": [
+        {
+          "label": "Dolor ENA",
+          "inputType": "text",
+          "placeholder": "",
+          "isCheckbox": false,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        },
+        {
+          "label": "Temporalidad",
+          "inputType": "text",
+          "placeholder": "",
+          "isCheckbox": false,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        },
+        {
+          "label": "Tipo",
+          "inputType": "text",
+          "placeholder": "",
+          "isCheckbox": false,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        },
+        {
+          "label": "Estudios Previos",
+          "inputType": "text",
+          "placeholder": "",
+          "isCheckbox": false,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        },
+        {
+          "label": "E. Neurológicas",
+          "inputType": "text",
+          "placeholder": "",
+          "isCheckbox": false,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        },
+        {
+          "label": "E. Renales",
+          "inputType": "text",
+          "placeholder": "",
+          "isCheckbox": false,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        },
+        {
+          "label": "E. Vasculares",
+          "inputType": "text",
+          "placeholder": "",
+          "isCheckbox": false,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        },
+        {
+          "label": "Goniomtería",
+          "inputType": "text",
+          "placeholder": "",
+          "isCheckbox": false,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        },
+        {
+          "label": "Evalucación Postural",
+          "inputType": "text",
+          "placeholder": "",
+          "isCheckbox": false,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        }
+      ]
+    },
+    {
+      "title": "Valoraciones",
+      "sections": [],
+      "screenNumber": 1,
+      "inputList": [
+        {
+          "label": "ROM PASIVO",
+          "inputType": "text",
+          "placeholder": "",
+          "isCheckbox": false,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        },
+        {
+          "label": "ROM ACTIVO",
+          "inputType": "text",
+          "placeholder": "",
+          "isCheckbox": false,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        },
+        {
+          "label": "Fuerza Daniel's",
+          "inputType": "text",
+          "placeholder": "",
+          "isCheckbox": false,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        },
+        {
+          "label": "Tono Muscular",
+          "inputType": "text",
+          "placeholder": "",
+          "isCheckbox": false,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        },
+        {
+          "label": "Trofismo",
+          "inputType": "text",
+          "placeholder": "",
+          "isCheckbox": false,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        },
+        {
+          "label": "Sensibiidad",
+          "inputType": "text",
+          "placeholder": "",
+          "isCheckbox": false,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        },
+        {
+          "label": "Pruebas Ortopédicas",
+          "inputType": "text",
+          "placeholder": "",
+          "isCheckbox": false,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        },
+        {
+          "label": "Test Funcional",
+          "inputType": "text",
+          "placeholder": "",
+          "isCheckbox": false,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        },
+        {
+          "label": "Padecimiento",
+          "inputType": "text",
+          "placeholder": "",
+          "isCheckbox": false,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        },
+        {
+          "label": "Pronostico",
+          "inputType": "text",
+          "placeholder": "",
+          "isCheckbox": false,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        },
+        {
+          "label": "Revaloración",
+          "inputType": "text",
+          "placeholder": "",
+          "isCheckbox": false,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        }
+      ]
+    },
+    {
+      "name": "Tratamiento ",
+      "description": "",
+      "isVisible": true,
+      "inputList": [
+        {
+          "label": "Tipo de Ejercicio",
+          "inputType": "text",
+          "placeholder": "",
+          "isCheckbox": false,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        },
+        {
+          "label": "No. de Repeticiones",
+          "inputType": "text",
+          "placeholder": "",
+          "isCheckbox": false,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        },
+        {
+          "label": "Periodicidad",
+          "inputType": "text",
+          "placeholder": "",
+          "isCheckbox": false,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        },
+        {
+          "label": "Avances Observados",
+          "inputType": "text",
+          "placeholder": "",
+          "isCheckbox": false,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        },
+        {
+          "label": "Medicación",
+          "inputType": "text",
+          "placeholder": "",
+          "isCheckbox": false,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        },
+        {
+          "label": "Periodicidad",
+          "inputType": "text",
+          "placeholder": "",
+          "isCheckbox": false,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        },
+        {
+          "label": "Recomendaciones",
+          "inputType": "text",
+          "placeholder": "",
+          "isCheckbox": false,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        }
+      ]
+    },
+    {
+      "name": "Notas Clínicas ",
+      "description": "",
+      "isVisible": true,
+      "inputList": [
+        {
+          "label": "Notas de Hallazgos",
+          "inputType": "text",
+          "placeholder": "",
+          "isCheckbox": false,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        },
+        {
+          "label": "Notas de Evolución",
+          "inputType": "text",
+          "placeholder": "",
+          "isCheckbox": false,
+          "isSelect": false,
+          "isMulti": false,
+          "optionSelect": []
+        }
+      ]
+    }
+  ]
+}
