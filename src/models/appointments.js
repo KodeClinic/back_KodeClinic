@@ -6,14 +6,14 @@ const appointmentSchema = new mongoose.Schema({
     year: { type: Number, required: true },
     month: { type: Number, required: true },
     day: { type: Number, required: true },
-    week: { type: Number, required: true },
+    // week: { type: Number, required: true },
   },
   consultType: {
     type: String,
     required: true,
     enum: ["therapy", "valoration"],
   },
-  paymentType: { type: String, required: true, enum: ["cash"] }, // Valorar si falta Pagada conv  tarjeta
+  paymentType: { type: String, required: true, enum: ["cash", "pending"] }, // Valorar si falta Pagada conv  tarjeta
   paymentStatus: { type: String, required: true, enum: ["paid", "topay"] },
   status: {
     type: String,
