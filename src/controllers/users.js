@@ -11,17 +11,12 @@ module.exports = {
       if (!selectuser) {
         next({ status: 404, send: { msg: "Usuario no encontrado" } });
       }
-      res = {
-        id: selectuser._id,
-        email: selectuser.email,
-        name: selectuser.name,
-        lastName: selectuser.lastName,
-        gender: selectuser.gender,
-        cellphone: selectuser.cellphone,
-      };
+
+      selectuser.password = "xxxx";
+
       next({
         status: 201,
-        send: { msg: "Usuario encotrado", data: res },
+        send: { msg: "Usuario encotrado", data: selectuser },
       });
     } catch (error) {
       next({ status: 400, send: { msg: "Usuario no encontrado", err: error } });

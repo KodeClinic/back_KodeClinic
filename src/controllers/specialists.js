@@ -36,4 +36,25 @@ module.exports = {
       });
     }
   },
+  getPatients: async (req, res, next) => {
+    const { idSpecialist } = req.params;
+
+    try {
+      const specialist = await User.findById(idSpecialist);
+      const patientList = specialist.specialistInformation.patientList;
+
+      next({
+        status: 201,
+        send: {
+          msg: "Inforación del Especialista actualizada",
+          data: patientList,
+        },
+      });
+    } catch (error) {
+      next({
+        status: 400,
+        send: { msg: "Pacientes no encontrados", err: error },
+      });
+    }
+  },
 };

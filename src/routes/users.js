@@ -11,4 +11,6 @@ router.patch(
   "/completeInformation/:idSpecialist",
   specialistController.completeInformation
 ); //api/users/completeInformation/:idSpecialist
+
+router.get("/patientList/:idSpecialist", specialistController.getPatients); //api/users/patientList/:idSpecialist
 module.exports = router;
