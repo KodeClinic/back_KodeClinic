@@ -138,6 +138,7 @@ module.exports = {
             token: token,
             id: user._id,
             role: user.role,
+            informationComplete: user.informationComplete,
           },
         },
       });

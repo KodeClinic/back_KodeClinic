@@ -1,6 +1,9 @@
 const Appointment = require("../models/appointments");
 const Specialist = require("../models/users");
 const Patient = require("../models/users");
+const ClinicalHistory = require("../models/clinicalHistories");
+const Template = require("../models/templates");
+const transporter = require("../utils/mailer");
 
 module.exports = {
   createAppointment: async (req, res, next) => {
@@ -46,8 +49,8 @@ module.exports = {
       consultingAddress,
     } = req.body;
 
+    //Creacion Contraseña temporal
     let temporalyPassword = "";
-
     for (let index = 0; index <= 5; index++) {
       let character = Math.ceil(Math.random() * 9);
       temporalyPassword += character;
@@ -72,11 +75,16 @@ module.exports = {
         role: "patient",
         validatedAccount: false,
         informationComplete: false,
+        verificationCode: temporalyPassword,
         patientInformation: { specialistId: idSpecialist },
       };
       const specialist = await Specialist.findById(idSpecialist);
+      const template = Template.find({ templateID: 2 });
+
+      //Creacion de Pciente
       const newPatient = await Patient.create(newPatientInfo);
 
+      //Creacion de cita
       const appointment = await Appointment.create({
         date: dateObjet,
         consultType: consultType,
@@ -89,6 +97,14 @@ module.exports = {
         patientId: newPatient._id,
       });
 
+      //Creacion de Historia Clinica
+      const clinicalHistory = await ClinicalHistory.create({
+        appointmentId: appointment._id,
+        patientId: newPatient._id,
+        templateId: template._id,
+      });
+
+      //Actualización de Specialista: adision del Paciente a su lista de pacientes
       const specialistUpdate = await Specialist.findByIdAndUpdate(
         idSpecialist,
         {
@@ -105,10 +121,24 @@ module.exports = {
         }
       );
 
+      //Actualizacion Paciente: adision de cita en lista de citas paciente
       newPatient.patientInformation.appointmentList.push({
         appointmentId: appointment._id,
       });
       await newPatient.save();
+
+      //Actualización de Cita: adisión de id de historia clinica
+      appointment.clinicalHistory = clinicalHistory._id;
+      appointment.save();
+
+      //Envio de Email con conrtaseña temporal
+      await transporter.sendMail({
+        from: '"KodeClinic" <contacto.kodeclinic@gmail.com>',
+        to: email,
+        subject: `Contraseña temporal para acceso a KodeClinic`,
+        // text: "Hello world?", // plain text body
+        html: `<b>Bienvenido a KodeClinc, tu contraseña temporal para ingresar a la Plataforma y completar la verificación de este correo es: ${temporalyPassword} </b>`, // html body
+      });
 
       next({
         status: 201,
@@ -121,7 +151,7 @@ module.exports = {
       next({ status: 400, send: { msg: "Cita no creada", data: error } });
     }
   },
-
+  //Create appointment for Existing patient
   createAppointmentEP: async (req, res, next) => {
     const { idSpecialist } = req.params;
     const {
@@ -144,7 +174,9 @@ module.exports = {
     try {
       const specialist = await Specialist.findById(idSpecialist);
       const selectPatient = await Patient.findById(patient);
+      const template = Template.find({ templateID: 2 });
 
+      //Creacion de cita
       const appointment = await Appointment.create({
         date: dateObjet,
         consultType: consultType,
@@ -157,10 +189,22 @@ module.exports = {
         patientId: selectPatient._id,
       });
 
+      //Creación de Historia Clinica
+      const clinicalHistory = await ClinicalHistory.create({
+        appointmentId: appointment._id,
+        patientId: selectPatient._id,
+        templateId: template._id,
+      });
+
+      //Actualización de paciente: adision de cita
       selectPatient.patientInformation.appointmentList.push({
         appointmentId: appointment._id,
       });
       await selectPatient.save();
+
+      //Actualización de Cita: adisión de id de historia clinica
+      appointment.clinicalHistory = clinicalHistory._id;
+      appointment.save();
 
       next({
         status: 201,

@@ -19,7 +19,7 @@ module.exports = {
       });
 
       await Patient.findByIdAndUpdate(PatientId, {
-        "patientInformation.medicalRecordId": medicalRecord,
+        "patientInformation.medicalRecordId": medicalRecord._id,
       });
 
       next({

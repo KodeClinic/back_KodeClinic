@@ -16,7 +16,7 @@ const SpecialistInformationSchema = new mongoose.Schema({
   },
   patientList: [
     {
-      patientID: { type: String, required: false },
+      patientID: { type: mongoose.Types.ObjectId, ref: "Users" },
       patientName: { type: String, required: false },
       patientLastName: { type: String, required: false },
       patientGender: { type: String, required: false },
@@ -30,11 +30,11 @@ const SpecialistInformationSchema = new mongoose.Schema({
       end: { type: String, required: false },
     },
   ],
-  appointmentList: [
-    {
-      appointmentId: { type: mongoose.Types.ObjectId, required: false },
-    },
-  ],
+  // appointmentList: [
+  //   {
+  //     appointmentId: { type: mongoose.Types.ObjectId, required: false },
+  //   },
+  // ],
 });
 
 module.exports = SpecialistInformationSchema;

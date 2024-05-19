@@ -9,57 +9,45 @@
       "screenNumber": 1,
       "inputList": [
         {
+          "propertyName": "alergias",
           "label": "Alergias",
           "inputType": "checkbox",
           "placeholder": "",
-          "isCheckbox": true,
-          "isSelect": false,
-          "isMulti": false,
           "optionSelect": []
         },
         {
+          "propertyName": "hipertension",
           "label": "Hipertensión",
           "inputType": "checkbox",
           "placeholder": "",
-          "isCheckbox": true,
-          "isSelect": false,
-          "isMulti": false,
           "optionSelect": []
         },
         {
+          "propertyName": "cancer",
           "label": "Cancer",
           "inputType": "checkbox",
           "placeholder": "",
-          "isCheckbox": true,
-          "isSelect": false,
-          "isMulti": false,
           "optionSelect": []
         },
         {
+          "propertyName": "sobrepeso",
           "label": "Sobrepeso",
           "inputType": "checkbox",
           "placeholder": "",
-          "isCheckbox": true,
-          "isSelect": false,
-          "isMulti": false,
           "optionSelect": []
         },
         {
+          "propertyName": "diabetes",
           "label": "Diabetes",
           "inputType": "checkbox",
           "placeholder": "",
-          "isCheckbox": true,
-          "isSelect": false,
-          "isMulti": false,
           "optionSelect": []
         },
         {
+          "propertyName": "hernias",
           "label": "Hernias",
-          "inputType": "",
+          "inputType": "multiselect",
           "placeholder": "Selecciona todas las que apliquen",
-          "isCheckbox": false,
-          "isSelect": true,
-          "isMulti": true,
           "optionSelect": [
             { "value": "Umbilical", "label": "Umbilical" },
             { "value": "Epigastrica", "label": "Epigastrica" },
@@ -69,12 +57,10 @@
           ]
         },
         {
+          "propertyName": "esguinces",
           "label": "Esguinces",
-          "inputType": "",
+          "inputType": "multiselect",
           "placeholder": "Selecciona todas las que apliquen",
-          "isCheckbox": false,
-          "isSelect": true,
-          "isMulti": true,
           "optionSelect": [
             { "value": "Cervical", "label": "Cervical" },
             { "value": "Rodilla", "label": "Rodilla" },
@@ -84,12 +70,10 @@
           ]
         },
         {
+          "propertyName": "luxaciones",
           "label": "Luxaciónes",
-          "inputType": "",
+          "inputType": "multiselect",
           "placeholder": "Selecciona todas las que apliquen",
-          "isCheckbox": false,
-          "isSelect": true,
-          "isMulti": true,
           "optionSelect": [
             { "value": "Hombro", "label": "Hombro" },
             { "value": "Codo", "label": "Codo" },
@@ -104,12 +88,10 @@
           ]
         },
         {
+          "propertyName": "fracturas",
           "label": "Fracturas",
-          "inputType": "",
+          "inputType": "multiselect",
           "placeholder": "Selecciona todas las que apliquen",
-          "isCheckbox": false,
-          "isSelect": true,
-          "isMulti": true,
           "optionSelect": [
             { "value": "Disco", "label": "Disco" },
             { "value": "Clavícula", "label": "Clavícula" },
@@ -126,12 +108,10 @@
           ]
         },
         {
+          "propertyName": "enfRespiratorias",
           "label": "E. Respiratorias",
-          "inputType": "",
+          "inputType": "multiselect",
           "placeholder": "Selecciona todas las que apliquen",
-          "isCheckbox": false,
-          "isSelect": true,
-          "isMulti": true,
           "optionSelect": [
             { "value": "Asma", "label": "Asma" },
             { "value": "Disnea", "label": "Disnea" },
@@ -140,12 +120,10 @@
           ]
         },
         {
+          "propertyName": "enfMusculares",
           "label": "E. Musculáres",
-          "inputType": "",
+          "inputType": "multiselect",
           "placeholder": "Selecciona todas las que apliquen",
-          "isCheckbox": false,
-          "isSelect": true,
-          "isMulti": true,
           "optionSelect": [
             { "value": "Rupturas", "label": "Rupturas" },
             { "value": "Distensión", "label": "Distensión" },
@@ -159,12 +137,10 @@
           ]
         },
         {
+          "propertyName": "enfCardiovasculares",
           "label": "E. Cardiovasculares",
-          "inputType": "",
+          "inputType": "multiselect",
           "placeholder": "Selecciona todas las que apliquen",
-          "isCheckbox": false,
-          "isSelect": true,
-          "isMulti": true,
           "optionSelect": [
             { "value": "Arritmias", "label": "Arritmias" },
             {
@@ -191,12 +167,10 @@
         },
 
         {
+          "propertyName": "enfNeurologicas",
           "label": "E. Neourológicas",
-          "inputType": "",
+          "inputType": "multiselect",
           "placeholder": "Selecciona todas las que apliquen",
-          "isCheckbox": false,
-          "isSelect": true,
-          "isMulti": true,
           "optionSelect": [
             { "value": "Parkinson", "label": "Parkinson" },
             { "value": "EVC", "label": "EVC" },
@@ -206,24 +180,20 @@
           ]
         },
         {
+          "propertyName": "enfRenales",
           "label": "E. Renales",
-          "inputType": "",
+          "inputType": "multiselect",
           "placeholder": "Selecciona todas las que apliquen",
-          "isCheckbox": false,
-          "isSelect": true,
-          "isMulti": true,
           "optionSelect": [
             { "value": "Otra", "label": "Otra" },
             { "value": "Ninguna", "label": "Ninguna" }
           ]
         },
         {
+          "propertyName": "enfVasculares",
           "label": "E. Vasculaes",
-          "inputType": "",
+          "inputType": "multiselect",
           "placeholder": "Selecciona todas las que apliquen",
-          "isCheckbox": false,
-          "isSelect": true,
-          "isMulti": true,
           "optionSelect": [
             { "value": "Insuf. Venosa", "label": "Insuf. Venosa" },
             { "value": "Trombosis V.P.", "label": "Trombosis V.P." },
@@ -235,12 +205,10 @@
           ]
         },
         {
+          "propertyName": "enfOseas",
           "label": "E. Óseas",
-          "inputType": "",
+          "inputType": "multiselect",
           "placeholder": "Selecciona todas las que apliquen",
-          "isCheckbox": false,
-          "isSelect": true,
-          "isMulti": true,
           "optionSelect": [
             { "value": "Artritis R.", "label": "Artritis R." },
             { "value": "Artrosis", "label": "Artrosis" },
@@ -254,24 +222,20 @@
           ]
         },
         {
+          "propertyName": "enfHepaticas",
           "label": "E. Hepáticas",
-          "inputType": "",
+          "inputType": "multiselect",
           "placeholder": "Selecciona todas las que apliquen",
-          "isCheckbox": false,
-          "isSelect": true,
-          "isMulti": true,
           "optionSelect": [
             { "value": "Otra", "label": "Otra" },
             { "value": "Ninguna", "label": "Ninguna" }
           ]
         },
         {
+          "propertyName": "ETS",
           "label": "E.T.S.",
-          "inputType": "",
+          "inputType": "multiselect",
           "placeholder": "Selecciona todas las que apliquen",
-          "isCheckbox": false,
-          "isSelect": true,
-          "isMulti": true,
           "optionSelect": [
             { "value": "Sífilis", "label": "Sífilis" },
             { "value": "Gonorrea", "label": "Gonorrea" },
@@ -294,48 +258,40 @@
           "isVisible": true,
           "inputList": [
             {
+              "propertyName": "consumoDrogas",
               "label": "¿Conumes drogas?",
-              "inputType": "",
+              "inputType": "select",
               "placeholder": "Selecciona la opción que aplique",
-              "isCheckbox": false,
-              "isSelect": true,
-              "isMulti": false,
               "optionSelect": [
                 { "value": "Sí", "label": "Sí" },
                 { "value": "No", "label": "No" }
               ]
             },
             {
+              "propertyName": "consumoAlcohol",
               "label": "¿Conumes alcohol?",
-              "inputType": "",
+              "inputType": "select",
               "placeholder": "Selecciona la opción que aplique",
-              "isCheckbox": false,
-              "isSelect": true,
-              "isMulti": false,
               "optionSelect": [
                 { "value": "Sí", "label": "Sí" },
                 { "value": "No", "label": "No" }
               ]
             },
             {
+              "propertyName": "consumoTabaco",
               "label": "¿Conumes tabaco?",
-              "inputType": "",
+              "inputType": "select",
               "placeholder": "Selecciona la opción que aplique",
-              "isCheckbox": false,
-              "isSelect": true,
-              "isMulti": false,
               "optionSelect": [
                 { "value": "Sí", "label": "Sí" },
                 { "value": "No", "label": "No" }
               ]
             },
             {
+              "propertyName": "frecConsumoDrogas",
               "label": "Frecuencia consumo drogas por semana",
-              "inputType": "",
+              "inputType": "select",
               "placeholder": "Selecciona la opción que aplique",
-              "isCheckbox": false,
-              "isSelect": true,
-              "isMulti": false,
               "optionSelect": [
                 { "value": "Una a dos veces", "label": "Una a dos veces" },
                 {
@@ -349,12 +305,10 @@
               ]
             },
             {
+              "propertyName": "frecConsumoAlcohol",
               "label": "Frecuencia consumo alcohol por semana",
-              "inputType": "",
+              "inputType": "select",
               "placeholder": "Selecciona la opción que aplique",
-              "isCheckbox": false,
-              "isSelect": true,
-              "isMulti": false,
               "optionSelect": [
                 { "value": "Una a dos veces", "label": "Una a dos veces" },
                 {
@@ -368,12 +322,10 @@
               ]
             },
             {
+              "propertyName": "frecConsumoTabaco",
               "label": "Frecuencia consumo tabaco por semana",
-              "inputType": "",
+              "inputType": "select",
               "placeholder": "Selecciona la opción que aplique",
-              "isCheckbox": false,
-              "isSelect": true,
-              "isMulti": false,
               "optionSelect": [
                 { "value": "Una a dos veces", "label": "Una a dos veces" },
                 {
@@ -387,12 +339,10 @@
               ]
             },
             {
+              "propertyName": "intolerancias",
               "label": "Intolerancias",
               "inputType": "text",
               "placeholder": "Escriba aquí",
-              "isCheckbox": false,
-              "isSelect": false,
-              "isMulti": false,
               "optionSelect": []
             }
           ]
@@ -403,12 +353,10 @@
           "isVisible": true,
           "inputList": [
             {
+              "propertyName": "consumoAlimentos",
               "label": "Consumo alimentos por día",
-              "inputType": "",
+              "inputType": "select",
               "placeholder": "Selecciona la opción que aplique",
-              "isCheckbox": false,
-              "isSelect": true,
-              "isMulti": false,
               "optionSelect": [
                 { "value": "Una a dos veces", "label": "Una a dos veces" },
                 {
@@ -422,12 +370,10 @@
               ]
             },
             {
+              "propertyName": "calidadAlimentación",
               "label": "Calidad de la alimentación",
-              "inputType": "",
+              "inputType": "select",
               "placeholder": "Selecciona la opción que aplique",
-              "isCheckbox": false,
-              "isSelect": true,
-              "isMulti": false,
               "optionSelect": [
                 { "value": "Pobre", "label": "Pobre" },
                 { "value": "Buena", "label": "Buena" },
@@ -435,12 +381,10 @@
               ]
             },
             {
+              "propertyName": "calidadHidratacion",
               "label": "Calidad de la hidratación",
-              "inputType": "",
+              "inputType": "select",
               "placeholder": "Selecciona la opción que aplique",
-              "isCheckbox": false,
-              "isSelect": true,
-              "isMulti": false,
               "optionSelect": [
                 { "value": "Pobre", "label": "Pobre" },
                 { "value": "Buena", "label": "Buena" },
@@ -448,12 +392,10 @@
               ]
             },
             {
+              "propertyName": "suplementacion",
               "label": "Suplementación",
               "inputType": "text",
               "placeholder": "Escriba aquí",
-              "isCheckbox": false,
-              "isSelect": false,
-              "isMulti": false,
               "optionSelect": []
             }
           ]
@@ -464,12 +406,10 @@
           "isVisible": true,
           "inputList": [
             {
+              "propertyName": "frecTrabajo",
               "label": "Horas laborales por semana",
-              "inputType": "",
+              "inputType": "select",
               "placeholder": "Selecciona la opción que aplique",
-              "isCheckbox": false,
-              "isSelect": true,
-              "isMulti": false,
               "optionSelect": [
                 { "value": "No trabaja", "label": "No trabaja" },
                 { "value": "Menos de 20 horas", "label": "Menos de 20 horas" },
@@ -478,12 +418,10 @@
               ]
             },
             {
+              "propertyName": "calidadPostura",
               "label": "Calidad de la postura",
-              "inputType": "",
+              "inputType": "select",
               "placeholder": "Selecciona la opción que aplique",
-              "isCheckbox": false,
-              "isSelect": true,
-              "isMulti": false,
               "optionSelect": [
                 { "value": "Pobre", "label": "Pobre" },
                 { "value": "Buena", "label": "Buena" },
@@ -491,42 +429,34 @@
               ]
             },
             {
+              "propertyName": "ejercicio",
               "label": "Realizas ejercicio?",
-              "inputType": "",
+              "inputType": "select",
               "placeholder": "Selecciona la opción que aplique",
-              "isCheckbox": false,
-              "isSelect": true,
-              "isMulti": false,
               "optionSelect": [
                 { "value": "Sí", "label": "Sí" },
                 { "value": "No", "label": "No" }
               ]
             },
             {
+              "propertyName": "frecDescanso",
               "label": "Horas de descanso por semana",
               "inputType": "text",
               "placeholder": "Escriba aquí",
-              "isCheckbox": false,
-              "isSelect": false,
-              "isMulti": false,
               "optionSelect": []
             },
             {
+              "propertyName": "medicacion",
               "label": "Tratamiento farmacológico",
               "inputType": "text",
               "placeholder": "Escriba aquí",
-              "isCheckbox": false,
-              "isSelect": false,
-              "isMulti": false,
               "optionSelect": []
             },
             {
+              "propertyName": "frecEjercicio",
               "label": "Frecuencia ejercicio por semana",
-              "inputType": "",
+              "inputType": "select",
               "placeholder": "Selecciona la opción que aplique",
-              "isCheckbox": false,
-              "isSelect": true,
-              "isMulti": false,
               "optionSelect": [
                 { "value": "Una a dos veces", "label": "Una a dos veces" },
                 {
