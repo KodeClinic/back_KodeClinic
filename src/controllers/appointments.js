@@ -30,6 +30,7 @@ module.exports = {
     }
   },
 
+  //Create appointment for New Patient
   createAppointmentNP: async (req, res, next) => {
     const { idSpecialist } = req.params;
     const {
@@ -104,16 +105,68 @@ module.exports = {
         }
       );
 
-      (newPatient.patientInformation.appointmentList = {
+      newPatient.patientInformation.appointmentList.push({
         appointmentId: appointment._id,
-      }),
-        await newPatient.save();
+      });
+      await newPatient.save();
 
       next({
         status: 201,
         send: {
           msg: "Cita y Paciente creados con éxito",
           data: newPatient,
+        },
+      });
+    } catch (error) {
+      next({ status: 400, send: { msg: "Cita no creada", data: error } });
+    }
+  },
+
+  createAppointmentEP: async (req, res, next) => {
+    const { idSpecialist } = req.params;
+    const {
+      patient,
+      date,
+      startTime,
+      endTime,
+      consultType,
+      consultingAddress,
+    } = req.body;
+
+    let timeLapse = `${startTime} - ${endTime}`;
+    let arrayDate = date.split("-");
+    let dateObjet = {
+      year: arrayDate[0],
+      month: arrayDate[1],
+      day: arrayDate[2],
+    };
+
+    try {
+      const specialist = await Specialist.findById(idSpecialist);
+      const selectPatient = await Patient.findById(patient);
+
+      const appointment = await Appointment.create({
+        date: dateObjet,
+        consultType: consultType,
+        paymentType: "pending",
+        paymentStatus: "topay",
+        status: "schedule",
+        timeLapse: timeLapse,
+        consultingAdress: consultingAddress,
+        specialistId: specialist._id,
+        patientId: selectPatient._id,
+      });
+
+      selectPatient.patientInformation.appointmentList.push({
+        appointmentId: appointment._id,
+      });
+      await selectPatient.save();
+
+      next({
+        status: 201,
+        send: {
+          msg: "Cita creada con éxito",
+          data: appointment,
         },
       });
     } catch (error) {

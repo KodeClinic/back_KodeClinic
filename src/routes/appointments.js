@@ -8,4 +8,9 @@ router.post(
   appointmentController.createAppointmentNP
 );
 
+// Create Appointment for existing patient
+router.post(
+  "/createEP/:idSpecialist",
+  appointmentController.createAppointmentEP
+);
 module.exports = router;
