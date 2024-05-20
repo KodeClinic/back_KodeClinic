@@ -8,6 +8,7 @@ const db = require("./src/utils/db");
 const jwt = require("./src/utils/jwt");
 const app = express();
 const port = process.env.PORT || 3000;
+const specialistRoutes = require("./src/routes/editInformation");
 
 app.use(cors("*"));
 
@@ -20,6 +21,8 @@ app.use("/api", jwt.verify, routes);
 
 //Importacion de rutas privadas
 app.use("/", routes);
+
+app.use('/specialist', specialistRoutes);
 
 //Midleware del final
 app.use((resp, req, res, next) => {
