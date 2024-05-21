@@ -13,4 +13,11 @@ router.post(
   "/createEP/:idSpecialist",
   appointmentController.createAppointmentEP
 );
+
+//Get the appointments of the Specialist
+router.get(
+  "/getAppointments/:idSpecialist",
+  appointmentController.getSpecialistAppointments
+);
+
 module.exports = router;

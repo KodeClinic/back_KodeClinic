@@ -2,6 +2,8 @@ const mongoose = require("mongoose");
 
 const appointmentSchema = new mongoose.Schema({
   // _id: mongoose.Types.ObjectId,
+  // fullName: { type: String, required: true },
+  // gender: { type: String, required: true },
   date: {
     year: { type: Number, required: true },
     month: { type: Number, required: true },
@@ -21,10 +23,10 @@ const appointmentSchema = new mongoose.Schema({
     enum: ["completed", "start", "schedule"],
   },
   timeLapse: { type: String, required: true },
-  consultingAdress: { type: String, required: true },
+  consultingAddress: { type: String, required: true },
   clinicalHistory: { type: mongoose.Types.ObjectId, ref: "clinicalHistories" },
-  specialistId: { type: mongoose.Types.ObjectId, ref: "User" },
-  patientId: { type: mongoose.Types.ObjectId, ref: "User" },
+  specialistId: { type: mongoose.Types.ObjectId, ref: "Users" },
+  patientId: { type: mongoose.Types.ObjectId, ref: "Users" },
 });
 
 const Appointment = mongoose.model("Appointment", appointmentSchema);

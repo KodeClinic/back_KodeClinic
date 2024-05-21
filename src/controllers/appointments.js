@@ -56,6 +56,7 @@ module.exports = {
       temporalyPassword += character;
     }
 
+    // let fullName = `${name} ${lastName}`;
     let timeLapse = `${startTime} - ${endTime}`;
     let arrayDate = date.split("-");
     let dateObjet = {
@@ -87,12 +88,14 @@ module.exports = {
       //Creacion de cita
       const appointment = await Appointment.create({
         date: dateObjet,
+        // fullName: fullName,
+        // gender: gender,
         consultType: consultType,
         paymentType: "pending",
         paymentStatus: "topay",
         status: "schedule",
         timeLapse: timeLapse,
-        consultingAdress: consultingAddress,
+        consultingAddress: consultingAddress,
         specialistId: idSpecialist,
         patientId: newPatient._id,
       });
@@ -176,17 +179,21 @@ module.exports = {
       const selectPatient = await Patient.findById(patient);
       const template = Template.find({ templateID: 2 });
 
+      // let fullName = `${selectPatient.name} ${selectPatient.lastName}`;
+
       //Creacion de cita
       const appointment = await Appointment.create({
         date: dateObjet,
+        // fullName: fullName,
+        // gender: selectPatient.gender,
         consultType: consultType,
         paymentType: "pending",
         paymentStatus: "topay",
         status: "schedule",
         timeLapse: timeLapse,
-        consultingAdress: consultingAddress,
-        specialistId: specialist._id,
-        patientId: selectPatient._id,
+        consultingAddress: consultingAddress,
+        specialistId: idSpecialist,
+        patientId: patient,
       });
 
       //Creación de Historia Clinica
@@ -214,7 +221,28 @@ module.exports = {
         },
       });
     } catch (error) {
+      console.log(error);
       next({ status: 400, send: { msg: "Cita no creada", data: error } });
+    }
+  },
+
+  getSpecialistAppointments: async (req, res, next) => {
+    const { idSpecialist } = req.params;
+
+    try {
+      const appointments = await Appointment.find({
+        specialistId: idSpecialist,
+      }).populate("patientId");
+
+      next({
+        status: 201,
+        send: {
+          msg: "Citas encontradas con éxito",
+          data: appointments,
+        },
+      });
+    } catch (error) {
+      next({ status: 400, send: { msg: "Citas no encontradas", data: error } });
     }
   },
 };
