@@ -16,7 +16,7 @@ router.post(
 
 //Get the appointments of the Specialist
 router.get(
-  "/getAppointments/:idSpecialist",
+  "/getAppointments/:idSpecialist/:year/:month/:day",
   appointmentController.getSpecialistAppointments
 );
 

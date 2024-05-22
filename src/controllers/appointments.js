@@ -228,7 +228,12 @@ module.exports = {
 
   getSpecialistAppointments: async (req, res, next) => {
     const { idSpecialist } = req.params;
-    const { year, month, day } = req.body;
+    const { year } = req.params;
+    const { month } = req.params;
+    const { day } = req.params;
+
+    console.log("IDESPECIALISTA:", idSpecialist);
+    console.log("FECHA DE CITAS:", year, month);
 
     try {
       const appointments = await Appointment.find({
