@@ -43,8 +43,7 @@ module.exports = {
       email,
       gender,
       date,
-      startTime,
-      endTime,
+      timeLapse,
       consultType,
       consultingAddress,
     } = req.body;
@@ -56,8 +55,6 @@ module.exports = {
       temporalyPassword += character;
     }
 
-    // let fullName = `${name} ${lastName}`;
-    let timeLapse = `${startTime} - ${endTime}`;
     let arrayDate = date.split("-");
     let dateObjet = {
       year: arrayDate[0],
@@ -88,8 +85,6 @@ module.exports = {
       //Creacion de cita
       const appointment = await Appointment.create({
         date: dateObjet,
-        // fullName: fullName,
-        // gender: gender,
         consultType: consultType,
         paymentType: "pending",
         paymentStatus: "topay",
@@ -157,16 +152,9 @@ module.exports = {
   //Create appointment for Existing patient
   createAppointmentEP: async (req, res, next) => {
     const { idSpecialist } = req.params;
-    const {
-      patient,
-      date,
-      startTime,
-      endTime,
-      consultType,
-      consultingAddress,
-    } = req.body;
+    const { patient, date, timeLapse, consultType, consultingAddress } =
+      req.body;
 
-    let timeLapse = `${startTime} - ${endTime}`;
     let arrayDate = date.split("-");
     let dateObjet = {
       year: arrayDate[0],
@@ -179,13 +167,9 @@ module.exports = {
       const selectPatient = await Patient.findById(patient);
       const template = Template.find({ templateID: 2 });
 
-      // let fullName = `${selectPatient.name} ${selectPatient.lastName}`;
-
       //Creacion de cita
       const appointment = await Appointment.create({
         date: dateObjet,
-        // fullName: fullName,
-        // gender: selectPatient.gender,
         consultType: consultType,
         paymentType: "pending",
         paymentStatus: "topay",

@@ -4,9 +4,10 @@ const jwt = require("../utils/jwt");
 
 module.exports = {
   getbyTemplateId: async (req, res, next) => {
-    const { id } = req.params;
+    const { templateId } = req.params;
     try {
-      let selectTemplate = await Template.findOne({ templateId: id });
+      let selectTemplate = await Template.findOne({ templateID: templateId });
+      console.log(selectTemplate);
       if (!selectTemplate) {
         next({ status: 404, send: { msg: "Template no encontrado" } });
       }
