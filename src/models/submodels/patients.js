@@ -8,6 +8,7 @@ const PatientInformationSchema = new mongoose.Schema({
   religion: { type: String, required: false },
   emergencyContact: [
     {
+      name: { type: String, required: false },
       number: { type: String, required: false },
       relationship: { type: String, required: false },
     },

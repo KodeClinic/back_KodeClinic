@@ -228,10 +228,14 @@ module.exports = {
 
   getSpecialistAppointments: async (req, res, next) => {
     const { idSpecialist } = req.params;
+    const { year, month, day } = req.body;
 
     try {
       const appointments = await Appointment.find({
         specialistId: idSpecialist,
+        "date.year": year,
+        "date.month": month,
+        "date.day": day,
       }).populate("patientId");
 
       next({
