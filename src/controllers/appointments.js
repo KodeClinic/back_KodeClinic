@@ -100,6 +100,7 @@ module.exports = {
         appointmentId: appointment._id,
         patientId: newPatient._id,
         templateId: template._id,
+        status: "pending",
       });
 
       //Actualización de Specialista: adision del Paciente a su lista de pacientes
@@ -185,6 +186,7 @@ module.exports = {
         appointmentId: appointment._id,
         patientId: selectPatient._id,
         templateId: template._id,
+        status: "pending",
       });
 
       //Actualización de paciente: adision de cita
