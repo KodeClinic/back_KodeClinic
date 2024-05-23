@@ -2,7 +2,7 @@
 const User = require("../models/users");
 const jwt = require("../utils/jwt");
 const transporter = require("../utils/mailer");
-const { compare } = require("../helpers/handleBcrypt");
+const { compare, encrypt } = require("../helpers/handleBcrypt");
 
 module.exports = {
   getbyId: async (req, res, next) => {
@@ -33,7 +33,7 @@ module.exports = {
     }
 
     try {
-      const hassedPassword = await encrypt(req.body.password); //Hasea la contraseña
+      const hassedPassword = await encrypt(req.body.password); //Hashea la contraseña
 
       let user = await User.create({
         ...req.body,
@@ -194,13 +194,14 @@ module.exports = {
 
   restorePassword: async (req, res, next) => {
     const { email, newpassword } = req.body;
+    const hassedPassword = await encrypt(newpassword); //Hashea la contraseña
 
     try {
       let user = await User.findOne({
         email: email,
       });
 
-      user.password = newpassword;
+      user.password = hassedPassword;
       await user.save();
 
       next({

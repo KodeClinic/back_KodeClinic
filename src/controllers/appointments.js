@@ -66,11 +66,12 @@ module.exports = {
     };
 
     try {
+      const hassedPassword = await encrypt(temporalyPassword); //Hashea la contraseña
       let newPatientInfo = {
         name: name,
         lastName: lastName,
         email: email,
-        password: temporalyPassword,
+        password: hassedPassword,
         cellphone: cellphone,
         gender: gender,
         role: "patient",
