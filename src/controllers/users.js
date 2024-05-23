@@ -2,6 +2,7 @@
 const User = require("../models/users");
 const jwt = require("../utils/jwt");
 const transporter = require("../utils/mailer");
+const { compare } = require("../helpers/handleBcrypt");
 
 module.exports = {
   getbyId: async (req, res, next) => {
@@ -32,8 +33,11 @@ module.exports = {
     }
 
     try {
+      const hassedPassword = await encrypt(req.body.password); //Hasea la contraseña
+
       let user = await User.create({
         ...req.body,
+        password: hassedPassword,
         verificationCode: securityCode,
         validatedAccount: false,
         informationComplete: false,
@@ -123,7 +127,8 @@ module.exports = {
   login: async (req, res, next) => {
     try {
       let user = await User.findOne({ email: req.body.email });
-      if (user.password != req.body.password) {
+      const checkPassword = await compare(req.body.password, user.password);
+      if (!checkPassword) {  
         next({ status: 400, send: { msg: "Email o password incorrecto" } });
       } else if (user.validatedAccount === false) {
         next({ status: 401, send: { msg: "Email pendiente de validar" } });
