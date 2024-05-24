@@ -207,7 +207,7 @@ module.exports = {
         },
       });
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       next({ status: 400, send: { msg: "Cita no creada", data: error } });
     }
   },

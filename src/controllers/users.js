@@ -19,7 +19,7 @@ module.exports = {
         send: { msg: "Usuario encotrado", data: selectuser },
       });
     } catch (error) {
-      next({ status: 400, send: { msg: "Usuario no encontrado", err: error } });
+      next({ status: 401, send: { msg: "Usuario no encontrado", err: error } });
     }
   },
 

@@ -7,7 +7,7 @@ module.exports = {
     const { templateId } = req.params;
     try {
       let selectTemplate = await Template.findOne({ templateID: templateId });
-      console.log(selectTemplate);
+      // console.log(selectTemplate);
       if (!selectTemplate) {
         next({ status: 404, send: { msg: "Template no encontrado" } });
       }
