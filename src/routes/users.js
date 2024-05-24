@@ -4,7 +4,7 @@ const userController = require("../controllers/users");
 const specialistController = require("../controllers/specialists");
 
 //Users
-router.get("/:id", userController.getbyId); // /api/users/:id
+router.get("/get/:id", userController.getbyId); // /api/users/get/:id
 
 //Specialists
 router.patch(

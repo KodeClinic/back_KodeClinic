@@ -20,4 +20,10 @@ router.get(
   appointmentController.getSpecialistAppointments
 );
 
+//Get appointments for patient by Id
+router.get(
+  "/getAppointmentsbyPatient/:idPatient",
+  appointmentController.getAppointmentsbyPatient
+);
+
 module.exports = router;

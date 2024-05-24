@@ -14,4 +14,9 @@ router.get(
   medicalRecordController.getMedicalRecord
 ); // /api/medicalRecords/get/:patientId/:templateId
 
+router.patch(
+  "/update/:patientId/:templateId",
+  medicalRecordController.updateMedicalRecord
+); // /api/medicalRecords/update/:patientId/:templateId
+
 module.exports = router;

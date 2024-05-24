@@ -108,13 +108,38 @@ module.exports = {
         status: 201,
         send: {
           msg: "Antecedentes médicos encontrados con éxito",
-          data: newTemplate,
+          data: [newTemplate, medRecord.values],
         },
       });
     } catch (error) {
       next({
         status: 400,
         send: { msg: "Antecedentes médicos no encotrados", err: error },
+      });
+    }
+  },
+
+  updateMedicalRecord: async (req, res, next) => {
+    const { patientId, templateId } = req.params;
+
+    try {
+      const patient = await Patient.findById(patientId);
+      let medRecordId = patient.patientInformation.medicalRecordId;
+      const medRecord = await MedicalRecord.findByIdAndUpdate(medRecordId, {
+        values: req.body,
+      });
+
+      next({
+        status: 201,
+        send: {
+          msg: "Antecedentes médicos actualizados con éxito",
+          data: medRecord,
+        },
+      });
+    } catch (error) {
+      next({
+        status: 400,
+        send: { msg: "Antecedentes no actualizados", err: error },
       });
     }
   },

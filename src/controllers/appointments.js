@@ -43,8 +43,7 @@ module.exports = {
       email,
       gender,
       date,
-      startTime,
-      endTime,
+      timeLapse,
       consultType,
       consultingAddress,
     } = req.body;
@@ -56,8 +55,6 @@ module.exports = {
       temporalyPassword += character;
     }
 
-    // let fullName = `${name} ${lastName}`;
-    let timeLapse = `${startTime} - ${endTime}`;
     let arrayDate = date.split("-");
     let dateObjet = {
       year: arrayDate[0],
@@ -89,8 +86,6 @@ module.exports = {
       //Creacion de cita
       const appointment = await Appointment.create({
         date: dateObjet,
-        // fullName: fullName,
-        // gender: gender,
         consultType: consultType,
         paymentType: "pending",
         paymentStatus: "topay",
@@ -106,6 +101,7 @@ module.exports = {
         appointmentId: appointment._id,
         patientId: newPatient._id,
         templateId: template._id,
+        status: "pending",
       });
 
       //Actualización de Specialista: adision del Paciente a su lista de pacientes
@@ -158,16 +154,9 @@ module.exports = {
   //Create appointment for Existing patient
   createAppointmentEP: async (req, res, next) => {
     const { idSpecialist } = req.params;
-    const {
-      patient,
-      date,
-      startTime,
-      endTime,
-      consultType,
-      consultingAddress,
-    } = req.body;
+    const { patient, date, timeLapse, consultType, consultingAddress } =
+      req.body;
 
-    let timeLapse = `${startTime} - ${endTime}`;
     let arrayDate = date.split("-");
     let dateObjet = {
       year: arrayDate[0],
@@ -180,13 +169,9 @@ module.exports = {
       const selectPatient = await Patient.findById(patient);
       const template = Template.find({ templateID: 2 });
 
-      // let fullName = `${selectPatient.name} ${selectPatient.lastName}`;
-
       //Creacion de cita
       const appointment = await Appointment.create({
         date: dateObjet,
-        // fullName: fullName,
-        // gender: selectPatient.gender,
         consultType: consultType,
         paymentType: "pending",
         paymentStatus: "topay",
@@ -202,6 +187,7 @@ module.exports = {
         appointmentId: appointment._id,
         patientId: selectPatient._id,
         templateId: template._id,
+        status: "pending",
       });
 
       //Actualización de paciente: adision de cita
@@ -222,7 +208,7 @@ module.exports = {
         },
       });
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       next({ status: 400, send: { msg: "Cita no creada", data: error } });
     }
   },
@@ -243,6 +229,26 @@ module.exports = {
         "date.month": month,
         "date.day": day,
       }).populate("patientId");
+
+      next({
+        status: 201,
+        send: {
+          msg: "Citas encontradas con éxito",
+          data: appointments,
+        },
+      });
+    } catch (error) {
+      next({ status: 400, send: { msg: "Citas no encontradas", data: error } });
+    }
+  },
+
+  getAppointmentsbyPatient: async (req, res, next) => {
+    const { idPatient } = req.params;
+
+    try {
+      const appointments = await Appointment.find({
+        patientId: idPatient,
+      });
 
       next({
         status: 201,
