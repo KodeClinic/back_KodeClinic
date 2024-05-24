@@ -231,4 +231,24 @@ module.exports = {
       next({ status: 400, send: { msg: "Citas no encontradas", data: error } });
     }
   },
+
+  getAppointmentsbyPatient: async (req, res, next) => {
+    const { idPatient } = req.params;
+
+    try {
+      const appointments = await Appointment.find({
+        patientId: idPatient,
+      });
+
+      next({
+        status: 201,
+        send: {
+          msg: "Citas encontradas con éxito",
+          data: appointments,
+        },
+      });
+    } catch (error) {
+      next({ status: 400, send: { msg: "Citas no encontradas", data: error } });
+    }
+  },
 };
