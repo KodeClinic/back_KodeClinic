@@ -9,4 +9,9 @@ router.post(
   clinicalHistoryCotroller.updateClinicalHistory
 ); //  api/clinicalHistories/update/:patientId/:teplateId
 
+router.get(
+  "/get/:patientId/:appointmentId",
+  clinicalHistoryCotroller.getClinicalHistory
+); // /api/clinicalHistories/get/:patientId/:appointmentId
+
 module.exports = router;
