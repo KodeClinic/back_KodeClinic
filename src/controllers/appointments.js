@@ -55,6 +55,12 @@ module.exports = {
       temporalyPassword += character;
     }
 
+    let verificationCode = "";
+    for (let index = 0; index <= 3; index++) {
+      let character = Math.ceil(Math.random() * 9);
+      verificationCode += character;
+    }
+
     let arrayDate = date.split("-");
     let dateObjet = {
       year: arrayDate[0],
@@ -63,18 +69,18 @@ module.exports = {
     };
 
     try {
-      const hassedPassword = await encrypt(temporalyPassword); //Hashea la contraseña
+      // const hassedPassword = await encrypt(temporalyPassword); //Hashea la contraseña
       let newPatientInfo = {
         name: name,
         lastName: lastName,
         email: email,
-        password: hassedPassword,
+        password: temporalyPassword,
         cellphone: cellphone,
         gender: gender,
         role: "patient",
         validatedAccount: false,
         informationComplete: false,
-        verificationCode: temporalyPassword,
+        verificationCode: verificationCode,
         patientInformation: { specialistId: idSpecialist },
       };
       const specialist = await Specialist.findById(idSpecialist);
