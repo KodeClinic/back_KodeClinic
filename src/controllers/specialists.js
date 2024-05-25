@@ -3,7 +3,7 @@ const Specialist = require("../models/users");
 
 module.exports = {
   
-  editInformation: async (req, res, next) => {
+  edithInformation: async (req, res, next) => {
     try {
       const specialist = await Specialist.findByIdAndUpdate(req.params.id, req.body, {
         new: true

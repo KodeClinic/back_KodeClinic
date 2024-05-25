@@ -8,7 +8,7 @@ const db = require("./src/utils/db");
 const jwt = require("./src/utils/jwt");
 const app = express();
 const port = process.env.PORT || 3000;
-const specialistRoutes = require("./src/routes/editInformation");
+const specialistRoutes = require("./src/routes/edithInformation");
 
 app.use(cors("*"));
 
@@ -22,6 +22,7 @@ app.use("/api", jwt.verify, routes);
 //Importacion de rutas privadas
 app.use("/", routes);
 
+//Edith Information Specialist
 app.use('/specialist', specialistRoutes);
 
 //Midleware del final
