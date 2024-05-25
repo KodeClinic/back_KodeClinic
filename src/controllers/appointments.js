@@ -43,6 +43,7 @@ module.exports = {
       email,
       gender,
       date,
+      birthDate,
       timeLapse,
       consultType,
       consultingAddress,
@@ -78,6 +79,7 @@ module.exports = {
         cellphone: cellphone,
         gender: gender,
         role: "patient",
+        birthDate: birthDate,
         validatedAccount: false,
         informationComplete: false,
         verificationCode: verificationCode,
@@ -214,7 +216,6 @@ module.exports = {
         },
       });
     } catch (error) {
-      // console.log(error);
       next({ status: 400, send: { msg: "Cita no creada", data: error } });
     }
   },
@@ -224,9 +225,6 @@ module.exports = {
     const { year } = req.params;
     const { month } = req.params;
     const { day } = req.params;
-
-    console.log("IDESPECIALISTA:", idSpecialist);
-    console.log("FECHA DE CITAS:", year, month);
 
     try {
       const appointments = await Appointment.find({

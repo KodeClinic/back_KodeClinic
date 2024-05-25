@@ -4,6 +4,7 @@ module.exports = {
   completeInformation: async (req, res, next) => {
     const { idSpecialist } = req.params;
     const values = req.body;
+
     const update = {
       name: values.name,
       lastName: values.lastName,

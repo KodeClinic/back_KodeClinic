@@ -128,7 +128,7 @@ module.exports = {
     try {
       let user = await User.findOne({ email: req.body.email });
       const checkPassword = await compare(req.body.password, user.password);
-      if (!checkPassword) {  
+      if (!checkPassword) {
         next({ status: 400, send: { msg: "Email o password incorrecto" } });
       } else if (user.validatedAccount === false) {
         next({ status: 401, send: { msg: "Email pendiente de validar" } });
@@ -148,7 +148,7 @@ module.exports = {
         },
       });
     } catch (error) {
-      next({ status: 401, send: { msg: "Acceso no autorizado", err: error } });
+      next({ status: 400, send: { msg: "Acceso no autorizado", err: error } });
     }
   },
 
