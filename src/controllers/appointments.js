@@ -97,7 +97,7 @@ module.exports = {
         consultType: consultType,
         paymentType: "pending",
         paymentStatus: "topay",
-        status: "schedule",
+        status: "start",
         timeLapse: timeLapse,
         consultingAddress: consultingAddress,
         specialistId: idSpecialist,
@@ -124,6 +124,7 @@ module.exports = {
               patientLastName: lastName,
               patientGender: gender,
               patientCellphone: cellphone,
+              patientBirthdate: birthDate,
             },
           ],
         }
@@ -183,7 +184,7 @@ module.exports = {
         consultType: consultType,
         paymentType: "pending",
         paymentStatus: "topay",
-        status: "schedule",
+        status: "start",
         timeLapse: timeLapse,
         consultingAddress: consultingAddress,
         specialistId: idSpecialist,
@@ -263,6 +264,61 @@ module.exports = {
       });
     } catch (error) {
       next({ status: 400, send: { msg: "Citas no encontradas", data: error } });
+    }
+  },
+
+  getSpecialistAvailability: async (req, res, next) => {
+    const { idSpecialist } = req.params;
+    const { day, year, month } = req.body;
+
+    try {
+      const appointments = await Appointment.find({
+        specialistId: idSpecialist,
+        "date.year": year,
+        "date.month": month,
+        "date.day": day,
+      });
+
+      const optionSelectDuration = [];
+      let interval = {};
+
+      for (let i = 6; i < 22; i++) {
+        let starthour = i;
+        let endhour = i + 1;
+        if (endhour < 12) {
+          interval = {
+            value: `${starthour}:00 - ${endhour}:00 am`,
+            label: `${starthour}:00 - ${endhour}:00 am`,
+          };
+          optionSelectDuration.push(interval);
+        } else if (endhour >= 12) {
+          interval = {
+            value: `${starthour}:00 - ${endhour}:00 pm`,
+            label: `${starthour}:00 - ${endhour}:00 pm`,
+          };
+          optionSelectDuration.push(interval);
+        }
+      }
+
+      const availability = optionSelectDuration.filter((interval) => {
+        return !appointments.some(
+          (appointment) => appointment.timeLapse === interval.value
+        );
+      });
+
+      next({
+        status: 201,
+        send: {
+          msg: "Disponibilidad calculada con éxito",
+          data: availability,
+        },
+      });
+    } catch (error) {
+      console.log(error);
+      next({
+        status: 400,
+        send: { msg: "Error al evaluar la disponibilidad", data: error },
+      });
     }
   },
 };

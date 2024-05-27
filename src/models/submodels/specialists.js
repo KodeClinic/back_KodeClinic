@@ -21,6 +21,7 @@ const SpecialistInformationSchema = new mongoose.Schema({
       patientLastName: { type: String, required: false },
       patientGender: { type: String, required: false },
       patientCellphone: { type: String, required: false },
+      patientBirthdate: { type: String, required: false },
     },
   ],
   availability: [

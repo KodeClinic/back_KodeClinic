@@ -26,4 +26,10 @@ router.get(
   appointmentController.getAppointmentsbyPatient
 );
 
+// Get the availability of the Specialist based on the day
+router.post(
+  "/getAvailability/:idSpecialist",
+  appointmentController.getSpecialistAvailability
+);
+
 module.exports = router;
