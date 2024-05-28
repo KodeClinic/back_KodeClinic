@@ -15,7 +15,7 @@ module.exports = {
         {
           templateId: template._id,
           values: req.body,
-          status: "complete",
+          status: "completed",
         }
       );
 
@@ -23,6 +23,7 @@ module.exports = {
         status: 201,
         send: {
           msg: "Historia Clinica creada con éxito",
+          data: req.body,
           data: [clinicalHistory, appointment.specialistId],
         },
       });
@@ -71,51 +72,67 @@ module.exports = {
       );
       const template = await Template.findOne({ templateID: 2 });
 
-      const values = clinicalHistory.values;
+      if (!clinicalHistory.hasOwnProperty("values")) {
+        next({
+          status: 404,
+          send: {
+            msg: "Historia Clinica vacía",
+            // data: [newTemplate, values],
+          },
+        });
+      } else {
+        const values = clinicalHistory.values;
 
-      // console.log("appointment", appointment);
-      // console.log("clinicalHistory", clinicalHistory);
-      // console.log("template", template);
-      // console.log("values", values);
+        // console.log("appointment", appointment);
+        // console.log("clinicalHistory", clinicalHistory);
+        // console.log("template", template);
+        // console.log("values", values);
 
-      const newScreens = template.screens.map((screen) => {
-        const { title, sections, screenNumber, _id } = screen;
+        const newScreens = template.screens.map((screen) => {
+          const { title, sections, screenNumber, _id } = screen;
 
-        if (screen.sections.length === 0) {
-          let newList = newInputList(screen.inputList, values); //result es un array de objetos
-          return { title, sections, screenNumber, _id, inputList: newList };
-        } else if (
-          screen.inputList.length === 0 &&
-          screen.sections.length !== 0
-        ) {
-          const newSections = screen.sections.map((section) => {
-            const { name, description, isVisible, _id } = section;
-            let newList = newInputList(section.inputList, values); //result es un array de objetos
-            return { name, description, isVisible, _id, inputList: newList };
-          });
-          return { title, sections, screenNumber, _id, sections: newSections };
-        }
-      });
+          if (screen.sections.length === 0) {
+            let newList = newInputList(screen.inputList, values); //result es un array de objetos
+            return { title, sections, screenNumber, _id, inputList: newList };
+          } else if (
+            screen.inputList.length === 0 &&
+            screen.sections.length !== 0
+          ) {
+            const newSections = screen.sections.map((section) => {
+              const { name, description, isVisible, _id } = section;
+              let newList = newInputList(section.inputList, values); //result es un array de objetos
+              return { name, description, isVisible, _id, inputList: newList };
+            });
+            return {
+              title,
+              sections,
+              screenNumber,
+              _id,
+              sections: newSections,
+            };
+          }
+        });
 
-      const { templateID, name, inVisible, _id } = template;
+        const { templateID, name, inVisible, _id } = template;
 
-      const newTemplate = {
-        templateID,
-        name,
-        inVisible,
-        _id,
-        screens: newScreens,
-      };
+        const newTemplate = {
+          templateID,
+          name,
+          inVisible,
+          _id,
+          screens: newScreens,
+        };
 
-      console.log(newTemplate);
+        console.log(newTemplate);
 
-      next({
-        status: 201,
-        send: {
-          msg: "Historia Clinica encontrada con éxito",
-          data: [newTemplate, values],
-        },
-      });
+        next({
+          status: 201,
+          send: {
+            msg: "Historia Clinica encontrada con éxito",
+            data: [newTemplate, values],
+          },
+        });
+      }
     } catch (error) {
       console.log(error);
       next({

@@ -23,10 +23,21 @@ module.exports = {
       });
     }
   },
-  detele: async (req, res, next) => {
+  //Delete Appointment & Clinical History refered
+  deleteAppointment: async (req, res, next) => {
+    const { idAppointment } = req.params;
+
     try {
-      const { id } = req.params;
-      let appoint = await Appointment.findByIdAndDelete(id);
+      const appointment = await Appointment.findById(idAppointment);
+
+      const selectClinicalHistory = await ClinicalHistory.findByIdAndDelete(
+        appointment.clinicalHistory
+      );
+
+      const selectAppointment = await Appointment.findByIdAndDelete(
+        idAppointment
+      );
+
       next({ status: 201, send: { msg: "Cita eliminada" } });
     } catch (error) {
       next({ status: 400, send: { msg: "Cita no eliminada", data: error } });
@@ -149,6 +160,46 @@ module.exports = {
         html: `<b>Bienvenido a KodeClinc, tu contraseña temporal para ingresar a la Plataforma y completar la verificación de este correo es: ${temporalyPassword} </b>`, // html body
       });
 
+      //Envio de Email con Información de la Cita Agendada
+      await transporter.sendMail({
+        from: '"KodeClinic" <contacto.kodeclinic@gmail.com>',
+        to: email,
+        subject: `KodeClinic: Información de Nueva Agendada`,
+        // text: "Hello world?", // plain text body
+        html: ` <h2>Información de cita</h2>
+        <p>${gender == "male" ? "Estimado" : "Estimada"} ${name}</p>
+        <p>Le informamos que su Especialista: ${specialist.name} ${
+          specialist.lastName
+        } ha agendado una cita con usted, a continuación le compartimos la información:</p>
+        <table border="1" cellspacing="0" cellpadding="10">
+            <tr>
+                <th style="background-color: #f2f2f2;">Día de la cita</th>
+                <td>${dateObjet.day}/${dateObjet.month}/${dateObjet.year}</td>
+            </tr>
+            <tr>
+                <th style="background-color: #f2f2f2;">Horario de la cita</th>
+                <td>${timeLapse}</td>
+            </tr>
+            <tr>
+                <th style="background-color: #f2f2f2;">Tipo de cita</th>
+                <td>${
+                  consultType == "valoration" ? "Valoración" : "Terápia"
+                }</td>
+            </tr>
+            <tr>
+                <th style="background-color: #f2f2f2;">Dirección de la cita</th>
+                <td>${consultingAddress}</td>
+            </tr>
+        </table>
+
+        <p>Por favor, asegúrese de llegar a tiempo. Si necesita reprogramar la cita o tiene alguna pregunta, no dude en ponerse en contacto con su Especialista al teléfono ${
+          specialist.cellphone
+        }.</p>
+        <p>¡Esperamos verle pronto!</p>
+        <p>Atentamente,</p>
+        <p>KodeClinic</p>`, // html body
+      });
+
       next({
         status: 201,
         send: {
@@ -178,44 +229,103 @@ module.exports = {
       const selectPatient = await Patient.findById(patient);
       const template = Template.find({ templateID: 2 });
 
-      //Creacion de cita
-      const appointment = await Appointment.create({
-        date: dateObjet,
-        consultType: consultType,
-        paymentType: "pending",
-        paymentStatus: "topay",
-        status: "start",
-        timeLapse: timeLapse,
-        consultingAddress: consultingAddress,
+      const appointmentValidation = await Appointment.find({
         specialistId: idSpecialist,
-        patientId: patient,
+        timeLapse: timeLapse,
+        "date.year": year,
+        "date.month": month,
+        "date.day": day,
       });
 
-      //Creación de Historia Clinica
-      const clinicalHistory = await ClinicalHistory.create({
-        appointmentId: appointment._id,
-        patientId: selectPatient._id,
-        templateId: template._id,
-        status: "pending",
-      });
+      //Candado contra repetición de Citas en un mismo horario
+      if (appointmentValidation == 0) {
+        //Creacion de cita
+        const appointment = await Appointment.create({
+          date: dateObjet,
+          consultType: consultType,
+          paymentType: "pending",
+          paymentStatus: "topay",
+          status: "start",
+          timeLapse: timeLapse,
+          consultingAddress: consultingAddress,
+          specialistId: idSpecialist,
+          patientId: patient,
+        });
 
-      //Actualización de paciente: adision de cita
-      selectPatient.patientInformation.appointmentList.push({
-        appointmentId: appointment._id,
-      });
-      await selectPatient.save();
+        //Creación de Historia Clinica
+        const clinicalHistory = await ClinicalHistory.create({
+          appointmentId: appointment._id,
+          patientId: selectPatient._id,
+          templateId: template._id,
+          status: "pending",
+        });
 
-      //Actualización de Cita: adisión de id de historia clinica
-      appointment.clinicalHistory = clinicalHistory._id;
-      appointment.save();
+        //Actualización de paciente: adision de cita
+        selectPatient.patientInformation.appointmentList.push({
+          appointmentId: appointment._id,
+        });
+        await selectPatient.save();
 
-      next({
-        status: 201,
-        send: {
-          msg: "Cita creada con éxito",
-          data: appointment,
-        },
-      });
+        //Actualización de Cita: adisión de id de historia clinica
+        appointment.clinicalHistory = clinicalHistory._id;
+        appointment.save();
+
+        //Envio de Email con Información de la Cita Agendada
+        await transporter.sendMail({
+          from: '"KodeClinic" <contacto.kodeclinic@gmail.com>',
+          to: selectPatient.email,
+          subject: `KodeClinic: Información de Nueva Agendada`,
+          // text: "Hello world?", // plain text body
+          html: ` <h2>Información de cita</h2>
+        <p>${selectPatient.gender == "male" ? "Estimado" : "Estimada"} ${
+            selectPatient.name
+          }</p>
+        <p>Le informamos que su Especialista: ${specialist.name} ${
+            specialist.lastName
+          } ha agendado una cita con usted, a continuación le compartimos la información:</p>
+        <table border="1" cellspacing="0" cellpadding="10">
+            <tr>
+                <th style="background-color: #f2f2f2;">Día de la cita</th>
+                <td>${dateObjet.day}/${dateObjet.month}/${dateObjet.year}</td>
+            </tr>
+            <tr>
+                <th style="background-color: #f2f2f2;">Horario de la cita</th>
+                <td>${timeLapse}</td>
+            </tr>
+            <tr>
+                <th style="background-color: #f2f2f2;">Tipo de cita</th>
+                <td>${
+                  consultType == "valoration" ? "Valoración" : "Terápia"
+                }</td>
+            </tr>
+            <tr>
+                <th style="background-color: #f2f2f2;">Dirección de la cita</th>
+                <td>${consultingAddress}</td>
+            </tr>
+        </table>
+        <p>Por favor, asegúrese de llegar a tiempo. Si necesita reprogramar la cita o tiene alguna pregunta, no dude en ponerse en contacto con su Especialista al teléfono ${
+          specialist.cellphone
+        }.</p>
+        <p>¡Esperamos verle pronto!</p>
+        <p>Atentamente,</p>
+        <p>KodeClinic</p>`, // html body
+        });
+
+        next({
+          status: 201,
+          send: {
+            msg: "Cita creada con éxito",
+            data: appointment,
+          },
+        });
+      } else if (appointmentValidation != 0) {
+        next({
+          status: 404,
+          send: {
+            msg: "Cita no creada, horario no disponible",
+          },
+        });
+      }
     } catch (error) {
       next({ status: 400, send: { msg: "Cita no creada", data: error } });
     }

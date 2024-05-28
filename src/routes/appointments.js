@@ -32,4 +32,10 @@ router.post(
   appointmentController.getSpecialistAvailability
 );
 
+//Delete Appointment & Clinical History
+router.delete(
+  "/deleteAppointment/:idAppointment",
+  appointmentController.deleteAppointment
+);
+
 module.exports = router;
