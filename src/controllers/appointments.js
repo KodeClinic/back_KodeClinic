@@ -426,10 +426,30 @@ module.exports = {
         },
       });
     } catch (error) {
-      console.log(error);
       next({
         status: 400,
         send: { msg: "Error al evaluar la disponibilidad", data: error },
+      });
+    }
+  },
+
+  getSingleAppointment: async (req, res, next) => {
+    const { idAppointment } = req.params;
+
+    try {
+      const selectAppoint = await Appointment.findById(idAppointment);
+
+      next({
+        status: 201,
+        send: {
+          msg: "Cita encontrada con éxito",
+          data: selectAppoint,
+        },
+      });
+    } catch (error) {
+      next({
+        status: 400,
+        send: { msg: "Cita no encontrada", data: error },
       });
     }
   },

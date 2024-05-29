@@ -38,4 +38,10 @@ router.delete(
   appointmentController.deleteAppointment
 );
 
+//Get single appointment (Patient side use)
+router.get(
+  "/findAppointment/:idAppointment",
+  appointmentController.getSingleAppointment
+);
+
 module.exports = router;

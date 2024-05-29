@@ -18,6 +18,12 @@ module.exports = {
           status: "completed",
         }
       );
+      const updateAppointment = await Appointment.findByIdAndUpdate(
+        appointmentId,
+        {
+          status: "completed",
+        }
+      );
 
       next({
         status: 201,
