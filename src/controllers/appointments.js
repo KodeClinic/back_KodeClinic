@@ -234,9 +234,9 @@ module.exports = {
       const appointmentValidation = await Appointment.find({
         specialistId: idSpecialist,
         timeLapse: timeLapse,
-        "date.year": year,
-        "date.month": month,
-        "date.day": day,
+        "date.year": dateObjet.year,
+        "date.month": dateObjet.month,
+        "date.day": dateObjet.day,
       });
 
       //Candado contra repetición de Citas en un mismo horario
