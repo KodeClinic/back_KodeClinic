@@ -41,6 +41,7 @@ module.exports = {
         verificationCode: securityCode,
         validatedAccount: false,
         informationComplete: false,
+        temporalyPassword: false,
       });
       await transporter.sendMail({
         from: '"KodeClinic" <contacto.kodeclinic@gmail.com>',
@@ -116,7 +117,7 @@ module.exports = {
         status: 200,
         send: {
           msg: "Acceso autorizado",
-          token: token,
+          data: [token, user.temporalyPassword],
         },
       });
     } catch (error) {
@@ -144,6 +145,7 @@ module.exports = {
             id: user._id,
             role: user.role,
             informationComplete: user.informationComplete,
+            temporalyPassword: user.temporalyPassword,
           },
         },
       });
@@ -202,6 +204,7 @@ module.exports = {
       });
 
       user.password = hassedPassword;
+      user.temporalyPassword = false;
       await user.save();
 
       next({

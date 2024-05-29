@@ -25,6 +25,10 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     required: false,
   },
+  temporalyPassword: {
+    type: Boolean,
+    required: false,
+  },
   role: {
     type: String,
     required: true,

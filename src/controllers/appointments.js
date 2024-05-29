@@ -4,6 +4,7 @@ const Patient = require("../models/users");
 const ClinicalHistory = require("../models/clinicalHistories");
 const Template = require("../models/templates");
 const transporter = require("../utils/mailer");
+const { compare, encrypt } = require("../helpers/handleBcrypt");
 
 module.exports = {
   createAppointment: async (req, res, next) => {
@@ -81,18 +82,19 @@ module.exports = {
     };
 
     try {
-      // const hassedPassword = await encrypt(temporalyPassword); //Hashea la contraseña
+      const hassedPassword = await encrypt(temporalyPassword); //Hashea la contraseña
       let newPatientInfo = {
         name: name,
         lastName: lastName,
         email: email,
-        password: temporalyPassword,
+        password: hassedPassword,
         cellphone: cellphone,
         gender: gender,
         role: "patient",
         birthDate: birthDate,
         validatedAccount: false,
         informationComplete: false,
+        temporalyPassword: true,
         verificationCode: verificationCode,
         patientInformation: { specialistId: idSpecialist },
       };
