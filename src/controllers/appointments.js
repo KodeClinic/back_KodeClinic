@@ -439,11 +439,15 @@ module.exports = {
     try {
       const selectAppoint = await Appointment.findById(idAppointment);
 
+      const selectClinicalHistory = await ClinicalHistory.findById(
+        selectAppoint.clinicalHistory
+      );
+
       next({
         status: 201,
         send: {
           msg: "Cita encontrada con éxito",
-          data: selectAppoint,
+          data: [selectAppoint, selectClinicalHistory],
         },
       });
     } catch (error) {
