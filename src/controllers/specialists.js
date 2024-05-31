@@ -9,7 +9,7 @@ module.exports = {
       name: values.name,
       lastName: values.lastName,
       birthDate: values.birthDate,
-      gender: values.gender.value,
+      gender: values.gender,
       cellphone: values.cellphone,
       address: values.address,
       colony: values.colony,
