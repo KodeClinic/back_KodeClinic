@@ -42,7 +42,10 @@ module.exports = {
   },
 
   getClinicalHistory: async (req, res, next) => {
-    const { patientId, appointmentId } = req.params;
+    const { patientId } = req.params;
+    const { appointmentId } = req.params;
+
+    console.log("El appointment ID :", appointmentId);
 
     const newInputList = (inputsArray, valuesObject) => {
       let result = inputsArray.map((input) => {
@@ -72,27 +75,25 @@ module.exports = {
     };
 
     try {
-      const appointment = await Appointment.findById(appointmentId);
-      const clinicalHistory = await ClinicalHistory.findById(
-        appointment.clinicalHistory
-      );
+      /*const appointment = await ClinicalHistory.find({
+        appointmentId: appointmentId,
+      });*/
+      const clinicalHistory = await ClinicalHistory.find({
+        appointmentId: appointmentId,
+      });
+      console.log(clinicalHistory);
+
       const template = await Template.findOne({ templateID: 2 });
 
-      if (!clinicalHistory.hasOwnProperty("values")) {
+      if (clinicalHistory[0].hasOwnProperty("values")) {
         next({
           status: 404,
           send: {
             msg: "Historia Clinica vacía",
-            // data: [newTemplate, values],
           },
         });
       } else {
-        const values = clinicalHistory.values;
-
-        // console.log("appointment", appointment);
-        // console.log("clinicalHistory", clinicalHistory);
-        // console.log("template", template);
-        // console.log("values", values);
+        const values = clinicalHistory[0].values;
 
         const newScreens = template.screens.map((screen) => {
           const { title, sections, screenNumber, _id } = screen;
@@ -140,7 +141,7 @@ module.exports = {
         });
       }
     } catch (error) {
-      console.log(error);
+      console.log("ERROR : ", error);
       next({
         status: 401,
         send: { msg: "Historia Clínica no encontrada", err: error },
