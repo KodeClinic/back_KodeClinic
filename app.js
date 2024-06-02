@@ -16,7 +16,7 @@ app.use(morgan("dev"));
 
 //Importacion de rutas
 app.use("/", publicRoutes);
-app.use("/api", jwt.verify, routes);
+app.use("/api", jwt.verify, routes); //validateToken, validateSpecialist, isSpecialist
 
 //Importacion de rutas privadas
 app.use("/", routes);

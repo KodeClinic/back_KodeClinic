@@ -29,7 +29,7 @@ module.exports = {
         status: 201,
         send: {
           msg: "Historia Clinica creada con éxito",
-          data: req.body,
+          // data: req.body,
           data: [clinicalHistory, appointment.specialistId],
         },
       });
