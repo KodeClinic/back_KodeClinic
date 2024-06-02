@@ -8,7 +8,7 @@ const db = require("./src/utils/db");
 const jwt = require("./src/utils/jwt");
 const app = express();
 const port = process.env.PORT || 3000;
-
+//Stable version before restructuring
 app.use(cors("*"));
 
 app.use(express.json());
