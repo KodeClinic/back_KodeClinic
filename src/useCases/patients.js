@@ -1,5 +1,6 @@
 const PxAdditionalInfo = require("../models/submodels/patients");
 const PxNewPatient = require("../models/users");
+const createError = require("http-errors");
 
 async function create(id) {
   const newPatient = await PxNewPatient.create({

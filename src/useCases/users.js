@@ -2,6 +2,7 @@
 const User = require("../models/users");
 const jwt = require("../utils/jwt");
 const transporter = require("../utils/mailer");
+const createError = require("http-errors");
 const { compare, encrypt } = require("../helpers/handleBcrypt");
 
 async function getById(id) {
@@ -141,9 +142,9 @@ async function login(email, password) {
   const checkPassword = await compare(password, user.password);
 
   if (!checkPassword) {
-    throw new createError(400, "Email o password incorrecto");
+    throw new createError(401, "Email o password incorrecto");
   } else if (user.validatedAccount === false) {
-    throw new createError(401, "Email pendiente de validar");
+    throw new createError(406, "Email pendiente de validar");
   }
 
   let token = jwt.create(user);

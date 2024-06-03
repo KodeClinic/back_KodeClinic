@@ -41,11 +41,11 @@ router.get("/:templateId/patients/:patientId", async (request, response) => {
 router.post("/:templateId/patients/:patientId", async (request, response) => {
   try {
     const { patientId, templateId } = request.params;
-    const { values } = request.body;
+    const { body } = request;
     const newMedicalRecord = await medicalRecord.create(
       patientId,
       templateId,
-      values
+      body
     );
 
     response.status(201);

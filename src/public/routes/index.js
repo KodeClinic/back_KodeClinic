@@ -64,7 +64,11 @@ router.post("/users/login", async (req, res, next) => {
       data: dataUser,
     });
   } catch (error) {
-    next({ status: 400, send: { msg: "Acceso no autorizado", err: error } });
+    console.log(error);
+    next({
+      status: error.status,
+      send: { msg: "Acceso no autorizado", err: error },
+    });
   }
 });
 

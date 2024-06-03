@@ -15,13 +15,14 @@ router.get("/:templateId", async (req, res, next) => {
   try {
     const { templateId } = req.params;
 
-    const template = await templatesUseCases.getbyTemplateId(templateId);
+    const template = await templatesUseCases.getById(templateId);
 
     res.json({
       msg: "Template encotrado",
       data: template,
     });
   } catch (error) {
+    console.log(error);
     next({
       status: 400,
       send: { msg: "Template no encontrado", err: error },

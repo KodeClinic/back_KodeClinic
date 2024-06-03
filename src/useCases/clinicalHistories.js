@@ -2,6 +2,7 @@ const ClinicalHistory = require("../models/clinicalHistories");
 const Patient = require("../models/users");
 const Template = require("../models/templates");
 const Appointment = require("../models/appointments");
+const createError = require("http-errors");
 
 async function update(patientId, templateId, appointmentId, body) {
   const template = await Template.findOne({ templateID: templateId });

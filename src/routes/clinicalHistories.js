@@ -22,7 +22,7 @@ router.patch(
   async (req, res, next) => {
     try {
       const { patientId, templateId, appointmentId } = req.params;
-      const { body } = req.body;
+      const { body } = req;
 
       const clinicalHistoryUpdate = await clinicalHistoriesUseCases.update(
         patientId,
@@ -60,7 +60,10 @@ router.get(
         msg: "Historia Clinica encontrada con éxito",
         data: clinicalHistory,
       });
+
+      console.log("la historia clinica es: ", clinicalHistory);
     } catch (error) {
+      console.log(error);
       next({
         status: 401,
         send: { msg: "Historia Clínica no encontrada", err: error },

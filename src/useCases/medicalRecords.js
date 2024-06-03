@@ -2,8 +2,9 @@
 const MedicalRecord = require("../models/medicalRecords");
 const Template = require("../models/templates");
 const Patient = require("../models/users");
+const createError = require("http-errors");
 
-async function create(patientId, templateId, values) {
+async function create(patientId, templateId, body) {
   //Create new medical record
   const TemplateId = await Template.findOne({ templateID: templateId });
   const PatientId = await Patient.findById(patientId);
@@ -11,7 +12,7 @@ async function create(patientId, templateId, values) {
   let medicalRecord = await MedicalRecord.create({
     patientId: PatientId,
     templateId: TemplateId,
-    values,
+    values: body,
   });
   await Patient.findByIdAndUpdate(PatientId, {
     "patientInformation.medicalRecordId": medicalRecord._id,
