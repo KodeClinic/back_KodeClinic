@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 //const medicalRecordController = require("../controllers/medicalRecords");
-const medicalRecord = require("../usecases/medicalRecords/create");
+const medicalRecord = require("../usecases/medicalRecords");
 //Medical Records
 
 // router.post(
