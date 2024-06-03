@@ -4,43 +4,44 @@ const appointmentController = require("../controllers/appointments");
 
 // Create Appointment & new patient
 router.post(
-  "/createNP/:idSpecialist",
+  "/createNP/:idSpecialist", // /specialists/:idSpecialist/newpatient
   appointmentController.createAppointmentNP
 );
 
 // Create Appointment for existing patient
 router.post(
-  "/createEP/:idSpecialist",
+  "/createEP/:idSpecialist", // /specialists/:idSpecialist/existingpatient
   appointmentController.createAppointmentEP
 );
 
 //Get the appointments of the Specialist
 router.get(
-  "/getAppointments/:idSpecialist/:year/:month/:day",
+  "/getAppointments/:idSpecialist/:year/:month/:day", // /specialists/:idSpecialist/year/:year/month/:month/day/:day
   appointmentController.getSpecialistAppointments
 );
 
 //Get appointments for patient by Id
 router.get(
-  "/getAppointmentsbyPatient/:idPatient",
+  "/getAppointmentsbyPatient/:idPatient", // /patients/:idPatient
   appointmentController.getAppointmentsbyPatient
 );
 
 // Get the availability of the Specialist based on the day
 router.post(
-  "/getAvailability/:idSpecialist",
+  //Cambiar a get
+  "/getAvailability/:idSpecialist", // /availability/specialists/:idSpecialist/year/:year/month/:month/day/:day
   appointmentController.getSpecialistAvailability
 );
 
 //Delete Appointment & Clinical History
 router.delete(
-  "/deleteAppointment/:idAppointment",
+  "/deleteAppointment/:idAppointment", // /:idAppointment
   appointmentController.deleteAppointment
 );
 
 //Get single appointment (Patient side use)
 router.get(
-  "/findAppointment/:idAppointment",
+  "/findAppointment/:idAppointment", // /:idAppointment
   appointmentController.getSingleAppointment
 );
 

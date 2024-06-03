@@ -14,12 +14,11 @@ app.use(cors("*"));
 app.use(express.json());
 app.use(morgan("dev"));
 
-//Importacion de rutas
+//Importacion de rutas públicas
 app.use("/", publicRoutes);
-app.use("/api", jwt.verify, routes); //validateToken, validateSpecialist, isSpecialist
 
 //Importacion de rutas privadas
-app.use("/", routes);
+app.use("/api", jwt.verify, routes); //validateToken, validateSpecialist, isSpecialist
 
 //Midleware del final
 app.use((resp, req, res, next) => {
