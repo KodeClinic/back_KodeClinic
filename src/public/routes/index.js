@@ -85,7 +85,7 @@ router.post("/users/forgotpassword", async (req, res, next) => {
 });
 
 //PATCH /users/restorepassword
-router.patch("/users/restoreassword", async (req, res, next) => {
+router.patch("/users/restorepassword", async (req, res, next) => {
   try {
     const { email, newpassword } = req.body;
 
