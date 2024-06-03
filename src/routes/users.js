@@ -17,17 +17,25 @@
 
 const express = require("express");
 const router = express.Router();
-const userController = require("../controllers/users");
+const usersUseCases = require("../useCases/users");
 const specialistController = require("../controllers/specialists");
 
 //Users
-router.get("/get/:id", userController.getbyId); // /api/users/get/:id
 
-//Specialists
-router.patch(
-  "/completeInformation/:idSpecialist",
-  specialistController.completeInformation
-); //api/users/completeInformation/:idSpecialist
+//GET /api/users/:id
+router.get("/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
 
-router.get("/patientList/:idSpecialist", specialistController.getPatients); //api/users/patientList/:idSpecialist
+    const user = await usersUseCases.getById(id);
+
+    res.json({
+      msg: "Usuario encotrado",
+      data: user,
+    });
+  } catch (error) {
+    next({ status: 401, send: { msg: "Usuario no encontrado", err: error } });
+  }
+});
+
 module.exports = router;

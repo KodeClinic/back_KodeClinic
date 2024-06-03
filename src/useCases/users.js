@@ -4,23 +4,15 @@ const jwt = require("../utils/jwt");
 const transporter = require("../utils/mailer");
 const { compare, encrypt } = require("../helpers/handleBcrypt");
 
-async function getbyId(req, res, next) {
-  const { id } = req.params;
-  try {
-    let selectuser = await User.findById(id);
-    if (!selectuser) {
-      next({ status: 404, send: { msg: "Usuario no encontrado" } });
-    }
-
-    selectuser.password = "xxxx";
-
-    next({
-      status: 201,
-      send: { msg: "Usuario encotrado", data: selectuser },
-    });
-  } catch (error) {
-    next({ status: 401, send: { msg: "Usuario no encontrado", err: error } });
+async function getById(id) {
+  let selectuser = await User.findById(id);
+  if (!selectuser) {
+    throw new createError(404, "Usuario no encontrado");
   }
+
+  //   selectuser.password = "xxxx";
+
+  return selectuser;
 }
 
 async function createAccount(email, password) {
@@ -165,6 +157,8 @@ async function restorePassword(email, newpassword) {
 }
 
 module.exports = {
+  getById,
+  createAccount,
   validateEmail,
   forgotPassword,
   login,
