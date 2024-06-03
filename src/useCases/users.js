@@ -36,9 +36,33 @@ async function createAccount(email, password) {
 
   await transporter.sendMail({
     from: '"KodeClinic" <contacto.kodeclinic@gmail.com>',
-    to: req.body.email,
+    to: email,
     subject: `Código de Verificación de Email: ${securityCode}`,
-    html: `<b>Bienvenido a KodeClinc, el código para completar la verificación de este correo es: ${securityCode} </b>`, // html body
+    html: `
+    <body style="font-family: Arial, sans-serif;">
+
+    <table cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; margin: auto; padding: 20px;">
+        <tr>
+            <td align="center">
+                <h1 style="color: #333;">¡Bienvenido a KodeClinic!</h1>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Estimado/a Especialista,</p>
+                <p>Nos complace informarte que tu cuenta ha sido creada con éxito.</p>
+                <p>Para completar el proceso de registro y garantizar la seguridad de tu cuenta, necesitamos verificar tu dirección de correo electrónico. Por favor, utiliza el siguiente código de verificación:</p>
+                <p style="font-size: 24px; font-weight: bold; color: #007bff;">${securityCode}</p>
+                <p>Utiliza este código dentro de la plataforma de KodeClinic para validar tu correo electrónico.</p>
+                <p>Si no reconoces este proceso o no has solicitado la creación de una cuenta en KodeClinic, por favor ignora este correo electrónico.</p>
+                <p>¡Gracias por elegir KodeClinic!</p>
+                <p>Atentamente,</p>
+                <p>El equipo de KodeClinic</p>
+            </td>
+        </tr>
+    </table>
+
+</body>`, // html body
   });
 
   return user.email;
@@ -61,9 +85,32 @@ async function sendEmailCode(email) {
 
   await transporter.sendMail({
     from: '"KodeClinic" <contacto.kodeclinic@gmail.com>',
-    to: req.body.email,
+    to: email,
     subject: `Código de Verificación de Email: ${securityCode}`,
-    html: `<b>El código para completar la verificación de este correo es: ${securityCode} </b>`, // html body
+    html: `
+    <body style="font-family: Arial, sans-serif;">
+
+      <table cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; margin: auto; padding: 20px;">
+          <tr>
+              <td align="center">
+                  <h1 style="color: #333;">Validación de Correo Electrónico</h1>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <p>Estimado/a Usuario,</p>
+                  <p>Para garantizar la seguridad de tu cuenta, necesitamos verificar tu dirección de correo electrónico. A continuación, te proporcionamos un código de verificación que deberás ingresar en la plataforma para completar el proceso:</p>
+                  <p style="font-size: 24px; font-weight: bold; color: #007bff;">${securityCode}</p>
+                  <p>Utiliza este código dentro de KodeClinic para validar tu correo electrónico. Si no has realizado este registro o no reconoces esta solicitud, por favor, ignora este correo electrónico.</p>
+                  <p>Si necesitas ayuda o tienes alguna pregunta, no dudes en ponerte en contacto con nuestro equipo de soporte.</p>
+                  <p>¡Gracias por elegir KodeClinic!</p>
+                  <p>Atentamente,</p>
+                  <p>El equipo de KodeClinic</p>
+              </td>
+          </tr>
+      </table>
+
+    </body>`, // html body
   });
 
   return user.email;
@@ -133,10 +180,31 @@ async function forgotPassword(email) {
 
   await transporter.sendMail({
     from: '"KodeClinic" <contacto.kodeclinic@gmail.com>',
-    to: req.body.email,
+    to: email,
     subject: `Código de restablecimiento de contraseña: ${securityCode}`,
     // text: "Hello world?", // plain text body
-    html: `<b>El código para poder restablecer su contraseña es: ${securityCode} </b>`, // html body
+    html: `
+    <body style="font-family: Arial, sans-serif;">
+      <table cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; margin: auto; padding: 20px;">
+          <tr>
+              <td align="center">
+                  <h1 style="color: #333;">Restablecimiento de Contraseña</h1>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <p>Estimado/a Usuario,</p>
+                  <p>Hemos recibido una solicitud para restablecer la contraseña de tu cuenta en KodeClinic. A continuación, te proporcionamos un código de verificación que necesitarás para completar el proceso:</p>
+                  <p style="font-size: 24px; font-weight: bold; color: #007bff;">${securityCode}</p>
+                  <p>Por favor, utiliza este código dentro de la plataforma de KodeClinic para restablecer tu contraseña. Si no has solicitado este cambio o no reconoces esta solicitud, te recomendamos que ignores este correo electrónico.</p>
+                  <p>Si tienes alguna pregunta o necesitas asistencia adicional, no dudes en ponerte en contacto con nuestro equipo de soporte.</p>
+                  <p>¡Gracias por confiar en KodeClinic!</p>
+                  <p>Atentamente,</p>
+                  <p>El equipo de KodeClinic</p>
+              </td>
+          </tr>
+      </table>
+    </body>`, // html body
   });
 
   return user.email;
