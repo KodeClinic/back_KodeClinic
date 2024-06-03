@@ -14,21 +14,15 @@ app.use(cors("*"));
 app.use(express.json());
 app.use(morgan("dev"));
 
-//Importacion de rutas
 app.use("/", publicRoutes);
 app.use("/api", jwt.verify, routes);
 
-//Importacion de rutas privadas
 app.use("/", routes);
 
 //Midleware del final
 app.use((resp, req, res, next) => {
   res.status(resp.status).send(resp.send);
 });
-
-// app.use((resp, req, res, next) => {
-//   console.log(resp);
-// });
 
 db.connect()
   .then(() => {
