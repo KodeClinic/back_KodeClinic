@@ -4,7 +4,7 @@ const Patient = require("../models/users");
 const ClinicalHistory = require("../models/clinicalHistories");
 const Template = require("../models/templates");
 const transporter = require("../utils/mailer");
-const { compare, encrypt } = require("../helpers/handleBcrypt");
+const { compare, encrypt } = require("../utils/handleBcrypt");
 
 module.exports = {
   createAppointment: async (req, res, next) => {

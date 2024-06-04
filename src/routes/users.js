@@ -18,7 +18,6 @@
 const express = require("express");
 const router = express.Router();
 const usersUseCases = require("../useCases/users");
-const specialistController = require("../controllers/specialists");
 
 //Users
 

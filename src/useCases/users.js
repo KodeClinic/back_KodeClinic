@@ -3,7 +3,7 @@ const User = require("../models/users");
 const jwt = require("../utils/jwt");
 const transporter = require("../utils/mailer");
 const createError = require("http-errors");
-const { compare, encrypt } = require("../helpers/handleBcrypt");
+const { compare, encrypt } = require("../utils/handleBcrypt");
 
 async function getById(id) {
   let selectuser = await User.findById(id);

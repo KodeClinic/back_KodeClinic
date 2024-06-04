@@ -2,7 +2,7 @@
 const User = require("../models/users");
 const jwt = require("../utils/jwt");
 const transporter = require("../utils/mailer");
-const { compare, encrypt } = require("../helpers/handleBcrypt");
+const { compare, encrypt } = require("../utils/handleBcrypt");
 
 module.exports = {
   getbyId: async (req, res, next) => {
