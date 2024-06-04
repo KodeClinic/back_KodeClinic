@@ -32,6 +32,7 @@ router.post("/users/createaccount", async (req, res, next) => {
       data: newUser.email,
     });
   } catch (error) {
+    console.log(error);
     next({ status: 400, send: { msg: "Usuario no creado", err: error } });
   }
 });

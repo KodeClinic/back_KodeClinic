@@ -33,6 +33,7 @@ async function createAccount(email, password) {
     validatedAccount: false,
     informationComplete: false,
     temporalyPassword: false,
+    role: "specialist",
   });
 
   await transporter.sendMail({
