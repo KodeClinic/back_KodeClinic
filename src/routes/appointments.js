@@ -106,8 +106,7 @@ router.get(
   "/availability/specialists/:idSpecialist/year/:year/month/:month/day/:day", // /availability/specialists/:idSpecialist/year/:year/month/:month/day/:day
   async (req, res, next) => {
     try {
-      const { idSpecialist } = req.params;
-      const { day, year, month } = req.body;
+      const { idSpecialist, day, year, month } = req.params;
 
       const availability = await appointmentsUseCases.getSpecialistAvailability(
         idSpecialist,
