@@ -128,7 +128,52 @@ async function createAppointmentNP(idSpecialist, body) {
     to: email,
     subject: `Contraseña temporal para acceso a KodeClinic`,
     // text: "Hello world?", // plain text body
-    html: `<b>Bienvenido a KodeClinc, tu contraseña temporal para ingresar a la Plataforma y completar la verificación de este correo es: ${temporalyPassword} </b>`, // html body
+    html: `
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido a KodeClinic</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px; 
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .button {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Bienvenido a KodeClinic</h2>
+        <p>Hola,</p>
+        <p>¡Bienvenido a KodeClinic! Nos complace informarte que tu especialista te ha dado de alta como paciente en nuestra plataforma. Ahora puedes acceder a tu cuenta y comenzar a visualizar tus tratamientos.</p>
+        <p>Para iniciar sesión, utiliza tu dirección de correo electrónico y la siguiente contraseña temporal:</p>
+        <strong>Contraseña temporal:</strong> ${temporalyPassword}</p>
+        <p>Una vez que hayas iniciado sesión, te recomendamos cambiar tu contraseña temporal por una que sea fácil de recordar pero segura.</p>
+        <p>Si tienes alguna pregunta o necesitas ayuda, no dudes en ponerte en contacto con nuestro equipo de soporte.</p>
+        <p>¡Gracias por unirte a KodeClinic!</p>
+        <p>Atentamente,<br>
+        El equipo de KodeClinic</p>
+        <p><a href="kodeclinic.mx/LogIn" class="button">Iniciar sesión en KodeClinic</a></p>
+    </div>
+</body>
+    `, // html body
   });
 
   //Envio de Email con Información de la Cita Agendada

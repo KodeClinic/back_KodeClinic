@@ -5,7 +5,6 @@ module.exports = {
   createNewPx: async (req, res, next) => {
     try {
       const { id } = req.params;
-      // console.log(id);
       let NewPx = await PxNewPatient.create({
         ...req.body,
         patientInformation: { specialistId: id },

@@ -22,7 +22,6 @@ router.get("/:templateId", async (req, res, next) => {
       data: template,
     });
   } catch (error) {
-    console.log(error);
     next({
       status: 400,
       send: { msg: "Template no encontrado", err: error },

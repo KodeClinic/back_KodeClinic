@@ -45,8 +45,6 @@ module.exports = {
     const { patientId } = req.params;
     const { appointmentId } = req.params;
 
-    console.log("El appointment ID :", appointmentId);
-
     const newInputList = (inputsArray, valuesObject) => {
       let result = inputsArray.map((input) => {
         const {
@@ -81,7 +79,6 @@ module.exports = {
       const clinicalHistory = await ClinicalHistory.find({
         appointmentId: appointmentId,
       });
-      console.log(clinicalHistory);
 
       const template = await Template.findOne({ templateID: 2 });
 
@@ -130,8 +127,6 @@ module.exports = {
           screens: newScreens,
         };
 
-        console.log(newTemplate);
-
         next({
           status: 201,
           send: {
@@ -141,7 +136,6 @@ module.exports = {
         });
       }
     } catch (error) {
-      console.log("ERROR : ", error);
       next({
         status: 401,
         send: { msg: "Historia Clínica no encontrada", err: error },

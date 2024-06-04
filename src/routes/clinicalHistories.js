@@ -60,10 +60,7 @@ router.get(
         msg: "Historia Clinica encontrada con éxito",
         data: clinicalHistory,
       });
-
-      console.log("la historia clinica es: ", clinicalHistory);
     } catch (error) {
-      console.log(error);
       next({
         status: 401,
         send: { msg: "Historia Clínica no encontrada", err: error },

@@ -140,6 +140,9 @@ async function validateEmail(email, securityCode) {
 async function login(email, password) {
   let user = await User.findOne({ email: email });
 
+  if (user == null) {
+    throw new createError(401, "Email pendiente de validar");
+  }
   const checkPassword = await compare(password, user.password);
 
   if (!checkPassword) {
