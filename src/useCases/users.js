@@ -132,7 +132,7 @@ async function validateEmail(email, securityCode) {
   user.verificationCode = "";
   await user.save();
 
-  let token = jwt.create(user);
+  let token = await jwt.tokenSign(user);
 
   return [token, user.temporalyPassword];
 }
@@ -151,7 +151,7 @@ async function login(email, password) {
     throw new createError(406, "Email pendiente de validar");
   }
 
-  let token = jwt.create(user);
+  let token = await jwt.tokenSign(user);
 
   const userData = {
     token: token,

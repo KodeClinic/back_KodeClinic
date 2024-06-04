@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 
 const SpecialistInformationSchema = new mongoose.Schema({
-  // _id: mongoose.Types.ObjectId,
   medicalLicense: { type: String, required: false },
   medicalSpeciality: { type: String, required: false },
   education: {
@@ -31,11 +30,6 @@ const SpecialistInformationSchema = new mongoose.Schema({
       end: { type: String, required: false },
     },
   ],
-  // appointmentList: [
-  //   {
-  //     appointmentId: { type: mongoose.Types.ObjectId, required: false },
-  //   },
-  // ],
 });
 
 module.exports = SpecialistInformationSchema;

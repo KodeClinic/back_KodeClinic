@@ -5,7 +5,7 @@ const cors = require("cors");
 const routes = require("./src/routes/index");
 const publicRoutes = require("./src/public/routes/index");
 const db = require("./src/utils/db");
-const jwt = require("./src/utils/jwt");
+const auth = require("./src/midlewares/auth");
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -18,7 +18,8 @@ app.use(morgan("dev"));
 app.use("/", publicRoutes);
 
 //Importacion de rutas privadas
-app.use("/api", jwt.verify, routes); //validateToken, validateSpecialist, isSpecialist
+// app.use("/api", jwt.verify, routes); //validateToken, validateSpecialist, isSpecialist
+app.use("/api", auth, routes); //validateToken, validateSpecialist, isSpecialist
 
 //Midleware del final
 app.use((resp, req, res, next) => {

@@ -1,11 +1,12 @@
 const express = require("express");
 const router = express.Router();
-// const appointmentController = require("../controllers/appointments");
 const appointmentsUseCases = require("../useCases/appointments");
+const checkRoleAuth = require("../midlewares/roleAuth");
 
 // Create Appointment & new patient
 router.post(
-  "/specialists/:idSpecialist/newpatient", // /specialists/:idSpecialist/newpatient
+  "/specialists/:idSpecialist/newpatient",
+  checkRoleAuth(["specialist"]),
   async (req, res, next) => {
     try {
       const { idSpecialist } = req.params;
@@ -28,7 +29,8 @@ router.post(
 
 // Create Appointment for existing patient
 router.post(
-  "/specialists/:idSpecialist/existingpatient", // /specialists/:idSpecialist/existingpatient
+  "/specialists/:idSpecialist/existingpatient",
+  checkRoleAuth(["specialist"]),
   async (req, res, next) => {
     try {
       const { idSpecialist } = req.params;
@@ -52,7 +54,8 @@ router.post(
 
 //Get the appointments of the Specialist
 router.get(
-  "/specialists/:idSpecialist/year/:year/month/:month/day/:day", // /specialists/:idSpecialist/year/:year/month/:month/day/:day
+  "/specialists/:idSpecialist/year/:year/month/:month/day/:day",
+  checkRoleAuth(["specialist"]),
   async (req, res, next) => {
     try {
       const { idSpecialist } = req.params;
@@ -80,7 +83,8 @@ router.get(
 
 //Get appointments for patient by Id
 router.get(
-  "/patients/:idPatient", // /patients/:idPatient
+  "/patients/:idPatient",
+  checkRoleAuth(["specialist", "patient"]),
   async (req, res, next) => {
     try {
       const { idPatient } = req.params;
@@ -103,7 +107,8 @@ router.get(
 // Get the availability of the Specialist based on the day
 router.get(
   //Cambiar a get
-  "/availability/specialists/:idSpecialist/year/:year/month/:month/day/:day", // /availability/specialists/:idSpecialist/year/:year/month/:month/day/:day
+  "/availability/specialists/:idSpecialist/year/:year/month/:month/day/:day",
+  checkRoleAuth(["specialist"]),
   async (req, res, next) => {
     try {
       const { idSpecialist, day, year, month } = req.params;
@@ -131,7 +136,8 @@ router.get(
 
 //Delete Appointment & Clinical History
 router.delete(
-  "/:idAppointment", // /:idAppointment
+  "/:idAppointment",
+  checkRoleAuth(["specialist"]),
   async (req, res, next) => {
     try {
       const { idAppointment } = req.params;
@@ -152,7 +158,8 @@ router.delete(
 
 //Get single appointment (Patient side use)
 router.get(
-  "/:idAppointment", // /:idAppointment
+  "/:idAppointment",
+  checkRoleAuth(["patient"]),
   async (req, res, next) => {
     try {
       const { idAppointment } = req.params;

@@ -1,24 +1,12 @@
-// const express = require("express");
-// const router = express.Router();
-// const clinicalHistoryCotroller = require("../controllers/clinicHistories");
-
-// router.post(
-//   "/update/:patientId/:templateId/:appointmentId",
-//   clinicalHistoryCotroller.updateClinicalHistory
-// ); //  api/clinicalHistories/update/:patientId/:teplateId
-
-// router.get(
-//   "/get/:patientId/:appointmentId",
-//   clinicalHistoryCotroller.getClinicalHistory
-// ); // /api/clinicalHistories/get/:patientId/:appointmentId
-
 const express = require("express");
 const router = express.Router();
 const clinicalHistoriesUseCases = require("../useCases/clinicalHistories");
+const checkRoleAuth = require("../midlewares/roleAuth");
 
 //Update
 router.patch(
   "/patients/:patientId/templates/:templateId/appointments/:appointmentId",
+  checkRoleAuth(["specialist"]),
   async (req, res, next) => {
     try {
       const { patientId, templateId, appointmentId } = req.params;
@@ -46,6 +34,7 @@ router.patch(
 
 router.get(
   "/patients/:patientId/appointments/:appointmentId",
+  checkRoleAuth(["specialist"]),
   async (req, res, next) => {
     try {
       const { patientId } = req.params;

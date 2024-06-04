@@ -1,21 +1,17 @@
 const mongoose = require("mongoose");
 
 const appointmentSchema = new mongoose.Schema({
-  // _id: mongoose.Types.ObjectId,
-  // fullName: { type: String, required: true },
-  // gender: { type: String, required: true },
   date: {
     year: { type: Number, required: true },
     month: { type: Number, required: true },
     day: { type: Number, required: true },
-    // week: { type: Number, required: true },
   },
   consultType: {
     type: String,
     required: true,
     enum: ["therapy", "valoration"],
   },
-  paymentType: { type: String, required: true, enum: ["cash", "pending"] }, // Valorar si falta Pagada conv  tarjeta
+  paymentType: { type: String, required: true, enum: ["cash", "pending"] },
   paymentStatus: { type: String, required: true, enum: ["paid", "topay"] },
   status: {
     type: String,

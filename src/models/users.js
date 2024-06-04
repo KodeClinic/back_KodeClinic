@@ -3,7 +3,6 @@ const SpecialistInformationSchema = require("../models/submodels/specialists");
 const PatientInformationSchema = require("../models/submodels/patients");
 
 const userSchema = new mongoose.Schema({
-  // _id: mongoose.Types.ObjectId,
   email: {
     type: String,
     required: true,
@@ -32,7 +31,7 @@ const userSchema = new mongoose.Schema({
   role: {
     type: String,
     required: true,
-    enum: ["patient", "specialist"],
+    enum: ["patient", "specialist", "admin"],
   },
   informationComplete: { type: Boolean, required: false },
   name: {
