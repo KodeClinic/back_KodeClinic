@@ -11,8 +11,6 @@ async function getById(id) {
     throw new createError(404, "Usuario no encontrado");
   }
 
-  //   selectuser.password = "xxxx";
-
   return selectuser;
 }
 
@@ -229,6 +227,76 @@ async function restorePassword(email, newpassword) {
   return "Contraseña restablecida con éxito";
 }
 
+async function moreInformation(email) {
+  await transporter.sendMail({
+    from: '"KodeClinic" <contacto.kodeclinic@gmail.com>',
+    to: email,
+    subject: `Conociendo más sobre KodeClinic`,
+    html: `<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descubre KodeClinic: Simplifica tu práctica médica</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      .header {
+        background-color: #0745CB;
+        color: #ffffff;
+        text-align: center;
+        padding: 10px;
+        border-radius: 5px 5px 0 0;
+      }
+      .content {
+        padding: 20px 0;
+      }
+      .cta-button {
+        display: inline-block;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border-style: solid;
+        border-color: #0745CB;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>implifica tu práctica médica con KodeClinic</h1>
+      </div>
+      <div class="content">
+        <p>Estimado/a Especialista,</p>
+        <p>Espero que este correo electrónico le encuentre bien. Nos complace presentarle KodeClinic, una innovadora aplicación web diseñada específicamente para especialistas médicos como usted.</p>
+        <p>KodeClinic ha sido desarrollada para brindarle todas las herramientas que necesita para gestionar su práctica médica de manera eficiente y efectiva. Entre sus características principales se incluyen:</p>
+        <ul>
+          <li>Generación ágil de citas con sus pacientes.</li>
+          <li>Documentación detallada de los antecedentes médicos.</li>
+          <li>Seguimiento exhaustivo a través de historias clínicas digitales.</li>
+          <li>Y muchas otras funcionalidades diseñadas para facilitar su día a día.</li>
+        </ul>
+        <p>Todo esto y más está disponible dentro de la plataforma de KodeClinic. Para comenzar a beneficiarse de estas herramientas, todo lo que necesita hacer es registrarse y generar una nueva cuenta.</p>
+        <p>No pierda más tiempo en tareas administrativas tediosas. Únase a KodeClinic hoy mismo y optimice su práctica médica.</p>
+        <p><a href="kodeclinic.mx/CreateAccount" class="cta-button">Regístrese ahora</a></p>
+        <p>Si tiene alguna pregunta o necesita más información, no dude en ponerse en contacto con nuestro equipo de soporte.</p>
+        <p>Atentamente,<br>
+        El equipo de KodeClinic<br></p>
+      </div>
+    </div>
+  </body>`,
+  });
+}
+
 module.exports = {
   getById,
   createAccount,
@@ -237,4 +305,5 @@ module.exports = {
   login,
   restorePassword,
   sendEmailCode,
+  moreInformation,
 };

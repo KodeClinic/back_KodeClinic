@@ -22,6 +22,7 @@ const usersUseCases = require("../../useCases/users");
 
 //POST /users/createaccount
 router.post("/users/createaccount", async (req, res, next) => {
+  //eliminar crateAccount
   try {
     const { email, password } = req.body;
 
@@ -118,6 +119,24 @@ router.post("/users/sendemailcode", async (req, res, next) => {
     });
   } catch (error) {
     next({ status: 400, send: { msg: "Código no enviado", err: error } });
+  }
+});
+
+router.get("/users/moreInformation/:email", async (req, res, next) => {
+  try {
+    const { email } = req.params;
+
+    await usersUseCases.moreInformation(email);
+
+    res.status(200);
+    res.json({
+      msg: "Información enviada con éxito",
+    });
+  } catch (error) {
+    next({
+      status: 400,
+      send: { msg: "No se pude enviar información al correo", err: error },
+    });
   }
 });
 
