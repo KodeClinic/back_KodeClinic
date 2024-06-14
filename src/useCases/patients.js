@@ -1,4 +1,4 @@
-const PxAdditionalInfo = require("../models/submodels/patients");
+const PxAdditionalInfo = require("../models/patients");
 const PxNewPatient = require("../models/users");
 const createError = require("http-errors");
 

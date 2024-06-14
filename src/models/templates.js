@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const screenTemplateSchema = require("../models/submodels/screenTemplateSchema");
+const screenTemplateSchema = require("./screenTemplateSchema");
 
 const templateSchema = new mongoose.Schema({
   templateID: { type: Number, unique: true, require: true },

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const SpecialistInformationSchema = require("../models/submodels/specialists");
-const PatientInformationSchema = require("../models/submodels/patients");
+const SpecialistInformationSchema = require("./specialists");
+const PatientInformationSchema = require("./patients");
 
 const userSchema = new mongoose.Schema({
   email: {

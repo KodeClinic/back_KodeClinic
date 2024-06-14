@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const inputsSchema = require("../submodels/inputsSchema");
+const inputsSchema = require("./inputsSchema");
 
 const sectionTemplateSchema = new mongoose.Schema({
   name: { type: String, required: false },
